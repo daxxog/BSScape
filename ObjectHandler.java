@@ -46,7 +46,7 @@ public class ObjectHandler {
 			ObjectOpen[i] = false;
 			ResetFire(i);
 		}
-		loadObjects("config\\objects.cfg");
+		loadObjects(".//config//objects.cfg");
 	}
 
 	public void process() {
