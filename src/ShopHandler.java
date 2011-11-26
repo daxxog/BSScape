@@ -39,8 +39,7 @@ public class ShopHandler {
 			for (int j = 0; j < MaxShopItems; j++) {
 				if (ShopItems[i][j] > 0) {
 					if (ShopItemsDelay[i][j] >= MaxShowDelay) {
-						if (j <= ShopItemsStandard[i]
-								&& ShopItemsN[i][j] <= ShopItemsSN[i][j]) {
+						if (j <= ShopItemsStandard[i] && ShopItemsN[i][j] <= ShopItemsSN[i][j]) {
 							if (ShopItemsN[i][j] < ShopItemsSN[i][j]) {
 								ShopItemsN[i][j] += 1; // if amount lower then
 														// standard, increase it
@@ -58,8 +57,7 @@ public class ShopHandler {
 			if (DidUpdate == true) {
 				for (int k = 1; k < PlayerHandler.maxPlayers; k++) {
 					if (PlayerHandler.players[k] != null) {
-						if (PlayerHandler.players[k].IsShopping == true
-								&& PlayerHandler.players[k].MyShopID == i) {
+						if (PlayerHandler.players[k].IsShopping == true && PlayerHandler.players[k].MyShopID == i) {
 							PlayerHandler.players[k].UpdateShop = true;
 						}
 					}
@@ -124,12 +122,9 @@ public class ShopHandler {
 					ShopBModifier[ShopID] = Integer.parseInt(token3[3]);
 					for (int i = 0; i < ((token3.length - 4) / 2); i++) {
 						if (token3[(4 + (i * 2))] != null) {
-							ShopItems[ShopID][i] = (Integer
-									.parseInt(token3[(4 + (i * 2))]) + 1);
-							ShopItemsN[ShopID][i] = Integer
-									.parseInt(token3[(5 + (i * 2))]);
-							ShopItemsSN[ShopID][i] = Integer
-									.parseInt(token3[(5 + (i * 2))]);
+							ShopItems[ShopID][i] = (Integer.parseInt(token3[(4 + (i * 2))]) + 1);
+							ShopItemsN[ShopID][i] = Integer.parseInt(token3[(5 + (i * 2))]);
+							ShopItemsSN[ShopID][i] = Integer.parseInt(token3[(5 + (i * 2))]);
 							ShopItemsStandard[ShopID]++;
 						} else {
 							break;
