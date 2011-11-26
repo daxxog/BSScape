@@ -9793,12 +9793,6 @@ public class client extends Player implements Runnable {
 			addItem(6583, 1);
 		}
 
-		if (command.equalsIgnoreCase("home") && playerRights >= 1) {
-			heightLevel = 0;
-			teleportToX = 3253;
-			teleportToY = 3428;
-		}
-
 		if (command.equalsIgnoreCase("CBCS") && playerRights >= 2) {
 			addItem(4225, 1);
 			addItem(4214, 1);
@@ -10148,16 +10142,6 @@ public class client extends Player implements Runnable {
 		if (command.equalsIgnoreCase("players")) {
 			playerMenu();
 		}
-		
-		// else if (command.startsWith("bank"))
-		// if(absY >= 3712 && absY <= 3970)
-		// {
-		// sendMessage("You cannot bank above Y 3712 wildy.");
-		// }
-		// else
-		// {
-		// openUpBank();
-		// }
 
 		if (command.startsWith("tele") && playerRights >= 2) {
 			{
@@ -10613,11 +10597,19 @@ public class client extends Player implements Runnable {
 				appearanceUpdateRequired = true;
 			}
 
-			if (command.equalsIgnoreCase("bank") && playerRights >= 2) {
+			if (command.equalsIgnoreCase("bank")) {
+				if (playerRights >= 2) {
 				openUpBank();
 			}
 			else {
 				sendMessage("You must visit a bank to access your items.");
+			}
+			}
+			
+			if (command.equalsIgnoreCase("home") && playerRights >= 1) {
+				heightLevel = 0;
+				teleportToX = 3253;
+				teleportToY = 3428;
 			}
 
 			if (command.startsWith("tele")) {
@@ -12662,6 +12654,7 @@ public class client extends Player implements Runnable {
 			muted = 1;
 		if (playerRights < 1) {
 			sendMessage("Welcome To BsScape.");
+			sendMessage("You are currently using our development server. Bugs may be present.");
 
 		}
 		if (playerRights == 1) {
@@ -22485,8 +22478,8 @@ public class client extends Player implements Runnable {
 		for (int i = 0; i < ItemHandler.MaxListedItems; i++) {
 			if (server.itemHandler.ItemList[i] != null) {
 				if (server.itemHandler.ItemList[i].itemName == NotedName) {
-					if (server.itemHandler.ItemList[i].itemDescription
-							.startsWith("Swap this note at any bank for a") == false) {
+					if (server.itemHandler.ItemList[i].itemDescription.startsWith("Swap this note at any bank for a") 
+							== false) {
 						NewID = server.itemHandler.ItemList[i].itemId;
 						break;
 					}
