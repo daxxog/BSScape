@@ -1,3 +1,19 @@
+/*Copyright (c) 2011, Raedism
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    *Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    *Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED 
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
+
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -193,8 +209,7 @@ public class PlayerHandler {
 			players[i].playerLastLogin = calc;
 			if (players[i].disconnected) {
 				for (int i3 = 0; i3 < NPCHandler.maxNPCs; i3++) {
-					if (server.npcHandler.npcs[i3] != null
-							&& players[i] != null) {
+					if (server.npcHandler.npcs[i3] != null && players[i] != null) {
 						if (server.npcHandler.npcs[i3].followPlayer == players[i].playerId)
 							server.npcHandler.npcs[i3].IsDead = true;
 					}
@@ -324,8 +339,7 @@ public class PlayerHandler {
 			// directly
 			// instead we're going to remove this player here and readd it right
 			// away below
-			if (plr.didTeleport == false
-					&& plr.withinDistance(plr.playerList[i]) == true) {
+			if (plr.didTeleport == false && plr.withinDistance(plr.playerList[i]) == true) {
 				plr.playerList[i].updatePlayerMovement(str);
 				plr.playerList[i].appendPlayerUpdateBlock(updateBlock);
 				plr.playerList[plr.playerListSize++] = plr.playerList[i];
@@ -343,13 +357,11 @@ public class PlayerHandler {
 		// iterate through all players to check whether there's new players to
 		// add
 		for (int i = 0; i < maxPlayers; i++) {
-			if (players[i] == null || players[i].isActive == false
-					|| players[i] == plr) {
+			if (players[i] == null || players[i].isActive == false || players[i] == plr) {
 				// not existing, not active or you are that player
 			} else {
 				int id = players[i].playerId;
-				if (plr.didTeleport == false
-						&& (plr.playerInListBitmap[id >> 3] & (1 << (id & 7))) != 0) {
+				if (plr.didTeleport == false && (plr.playerInListBitmap[id >> 3] & (1 << (id & 7))) != 0) {
 					// player already in playerList
 				} else if (plr.withinDistance(players[i]) == false) {
 					// out of sight

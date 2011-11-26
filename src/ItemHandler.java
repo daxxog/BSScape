@@ -1,5 +1,17 @@
-// Scape - The Scape Developers Team
-// Phate, AridTag, Dan, DrBone420, Hero
+/*Copyright (c) 2011, Raedism
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    *Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    *Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED 
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -99,10 +111,8 @@ public class ItemHandler {
 				globalItemAmount[i] = itemAmount;
 				globalItemStatic[i] = itemStatic;
 				globalItemTicks[i] = 0;
-				if (globalItemController[i] != -1
-						&& globalItemController[i] != 0)
-					spawnItem(globalItemID[i], globalItemX[i], globalItemY[i],
-							globalItemAmount[i], globalItemController[i]);
+				if (globalItemController[i] != -1 && globalItemController[i] != 0)
+					spawnItem(globalItemID[i], globalItemX[i], globalItemY[i], globalItemAmount[i], globalItemController[i]);
 				break;
 			}
 		}
@@ -118,9 +128,7 @@ public class ItemHandler {
 	public static void removeItem(int itemID, int itemX, int itemY,
 			int itemAmount) {
 		for (int i = 0; i <= 5000; i++) { // Phate: Loop through all item spots
-			if (globalItemID[i] == itemID && globalItemX[i] == itemX
-					&& globalItemY[i] == itemY
-					&& globalItemAmount[i] == itemAmount) {
+			if (globalItemID[i] == itemID && globalItemX[i] == itemX && globalItemY[i] == itemY && globalItemAmount[i] == itemAmount) {
 				removeItemAll(globalItemID[i], globalItemX[i], globalItemY[i]);
 				globalItemController[i] = 0;
 				globalItemID[i] = 0;
@@ -138,13 +146,11 @@ public class ItemHandler {
 		for (Player p : PlayerHandler.players) {
 			if (p != null) {
 				client person = (client) p;
-				if ((person.playerName != null || person.playerName != "null")
-						&& !(person.playerId == itemController)) {
+				if ((person.playerName != null || person.playerName != "null") && !(person.playerId == itemController)) {
 					// misc.println("distance to create "+person.distanceToPoint(itemX,
 					// itemY));
 					if (person.distanceToPoint(itemX, itemY) <= 60) {
-						person.createGroundItem(itemID, itemX, itemY,
-								itemAmount);
+						person.createGroundItem(itemID, itemX, itemY, itemAmount);
 					}
 				}
 			}
@@ -184,12 +190,6 @@ public class ItemHandler {
 	public static int[] DroppedItemsDeletecount = new int[MaxDropItems];
 	public static boolean[] DroppedItemsAlwaysDrop = new boolean[MaxDropItems];
 	public ItemList ItemList[] = new ItemList[MaxListedItems];
-
-	/*
-	 * ItemHandler() { for(int i = 0; i < MaxDropItems; i++) { ResetItem(i); }
-	 * for(int i = 0; i < MaxListedItems; i++) { ItemList[i] = null; }
-	 * loadItemList("item.cfg"); loadDrops("drops.cfg"); }
-	 */
 
 	public void ResetItem(int ArrayID) {
 		DroppedItemsID[ArrayID] = -1;
