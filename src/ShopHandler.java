@@ -104,15 +104,15 @@ public class ShopHandler {
 		String token2_2 = "";
 		String[] token3 = new String[(MaxShopItems * 2)];
 		boolean EndOfFile = false;
-		BufferedReader characterfile = null;
+		BufferedReader shopcfg = null;
 		try {
-			characterfile = new BufferedReader(new FileReader("./" + FileName));
+			shopcfg = new BufferedReader(new FileReader("./" + FileName));
 		} catch (FileNotFoundException fileex) {
 			misc.println(FileName + ": file not found.");
 			return false;
 		}
 		try {
-			line = characterfile.readLine();
+			line = shopcfg.readLine();
 		} catch (IOException ioexception) {
 			misc.println(FileName + ": error loading file.");
 			return false;
@@ -151,20 +151,20 @@ public class ShopHandler {
 			} else {
 				if (line.equals("[ENDOFSHOPLIST]")) {
 					try {
-						characterfile.close();
+						shopcfg.close();
 					} catch (IOException ioexception) {
 					}
 					return true;
 				}
 			}
 			try {
-				line = characterfile.readLine();
+				line = shopcfg.readLine();
 			} catch (IOException ioexception1) {
 				EndOfFile = true;
 			}
 		}
 		try {
-			characterfile.close();
+			shopcfg.close();
 		} catch (IOException ioexception) {
 		}
 		return false;
