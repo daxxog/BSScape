@@ -170,8 +170,7 @@ public class PlayerHandler {
 
 			if (players[i].disconnected) {
 				for (int i2 = 0; i2 < NPCHandler.maxNPCs; i2++) {
-					if (server.npcHandler.npcs[i2] != null
-							&& players[i] != null) {
+					if (server.npcHandler.npcs[i2] != null && players[i] != null) {
 						if (server.npcHandler.npcs[i2].followPlayer == players[i].playerId && server.npcHandler.npcs[i2] != null)
 							server.npcHandler.npcs[i2].IsDead = true;
 					}
@@ -180,16 +179,13 @@ public class PlayerHandler {
 					if (saveGame(players[i])) {
 						playerCount--;
 						savechar(players[i]);
-						System.out.println("Game saved for player "
-								+ players[i].playerName);
+						System.out.println("Game saved for player " + players[i].playerName);
 					} else {
-						System.out.println("Could not save for "
-								+ players[i].playerName);
+						System.out.println("Could not save for " + players[i].playerName);
 					}
 					;
 				} else {
-					System.out.println("Did not save for "
-							+ players[i].playerName);
+					System.out.println("Did not save for " + players[i].playerName);
 				}
 				removePlayer(players[i]);
 				players[i] = null;
@@ -402,8 +398,7 @@ public class PlayerHandler {
 	public boolean savechar(Player plr) {
 		BufferedWriter characterfile = null;
 		try {
-			characterfile = new BufferedWriter(new FileWriter("./characters/"
-					+ plr.playerName + ".txt"));
+			characterfile = new BufferedWriter(new FileWriter("./characters/"+ plr.playerName + ".txt"));
 			/* ACCOUNT */
 			characterfile.write("[ACCOUNT]", 0, 9);
 			characterfile.newLine();
@@ -418,20 +413,16 @@ public class PlayerHandler {
 			characterfile.write("[CHARACTER]", 0, 11);
 			characterfile.newLine();
 			characterfile.write("character-height = ", 0, 19);
-			characterfile.write(Integer.toString(plr.heightLevel), 0, Integer
-					.toString(plr.heightLevel).length());
+			characterfile.write(Integer.toString(plr.heightLevel), 0, Integer.toString(plr.heightLevel).length());
 			characterfile.newLine();
 			characterfile.write("character-posx = ", 0, 17);
-			characterfile.write(Integer.toString(plr.absX), 0, Integer
-					.toString(plr.absX).length());
+			characterfile.write(Integer.toString(plr.absX), 0, Integer.toString(plr.absX).length());
 			characterfile.newLine();
 			characterfile.write("character-posy = ", 0, 17);
-			characterfile.write(Integer.toString(plr.absY), 0, Integer
-					.toString(plr.absY).length());
+			characterfile.write(Integer.toString(plr.absY), 0, Integer.toString(plr.absY).length());
 			characterfile.newLine();
 			characterfile.write("character-rights = ", 0, 19);
-			characterfile.write(Integer.toString(plr.playerRights), 0, Integer
-					.toString(plr.playerRights).length());
+			characterfile.write(Integer.toString(plr.playerRights), 0, Integer.toString(plr.playerRights).length());
 			characterfile.newLine();
 			characterfile.write("character-ismember = ", 0, 21);
 			characterfile.write(Integer.toString(plr.playerIsMember), 0,
@@ -442,8 +433,7 @@ public class PlayerHandler {
 			Integer.toString(plr.playerMessages).length());
 			characterfile.newLine();
 			characterfile.write("character-lastconnection = ", 0, 27);
-			characterfile.write(plr.playerLastConnect, 0,
-					plr.playerLastConnect.length());
+			characterfile.write(plr.playerLastConnect, 0, plr.playerLastConnect.length());
 			characterfile.newLine();
 			characterfile.write("character-lastlogin = ", 0, 22);
 			characterfile.write(Integer.toString(plr.playerLastLogin), 0,
@@ -466,14 +456,11 @@ public class PlayerHandler {
 			characterfile.newLine();
 			for (int i = 0; i < plr.playerEquipment.length; i++) {
 				characterfile.write("character-equip = ", 0, 18);
-				characterfile.write(Integer.toString(i), 0, Integer.toString(i)
-						.length());
+				characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
 				characterfile.write("	", 0, 1);
-				characterfile.write(Integer.toString(plr.playerEquipment[i]),
-						0, Integer.toString(plr.playerEquipment[i]).length());
+				characterfile.write(Integer.toString(plr.playerEquipment[i]), 0, Integer.toString(plr.playerEquipment[i]).length());
 				characterfile.write("	", 0, 1);
-				characterfile.write(Integer.toString(plr.playerEquipmentN[i]),
-						0, Integer.toString(plr.playerEquipmentN[i]).length());
+				characterfile.write(Integer.toString(plr.playerEquipmentN[i]), 0, Integer.toString(plr.playerEquipmentN[i]).length());
 				characterfile.write("	", 0, 1);
 				characterfile.newLine();
 			}
@@ -513,11 +500,9 @@ public class PlayerHandler {
 					characterfile.write("character-item = ", 0, 17);
 					characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
 					characterfile.write("	", 0, 1);
-					characterfile.write(Integer.toString(plr.playerItems[i]),
-							0, Integer.toString(plr.playerItems[i]).length());
+					characterfile.write(Integer.toString(plr.playerItems[i]), 0, Integer.toString(plr.playerItems[i]).length());
 					characterfile.write("	", 0, 1);
-					characterfile.write(Integer.toString(plr.playerItemsN[i]),
-							0, Integer.toString(plr.playerItemsN[i]).length());
+					characterfile.write(Integer.toString(plr.playerItemsN[i]), 0, Integer.toString(plr.playerItemsN[i]).length());
 					characterfile.newLine();
 				}
 			}
@@ -528,14 +513,11 @@ public class PlayerHandler {
 			for (int i = 0; i < plr.bankItems.length; i++) {
 				if (plr.bankItems[i] > 0) {
 					characterfile.write("character-bank = ", 0, 17);
-					characterfile.write(Integer.toString(i), 0, Integer
-							.toString(i).length());
+					characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
 					characterfile.write("	", 0, 1);
-					characterfile.write(Integer.toString(plr.bankItems[i]), 0,
-							Integer.toString(plr.bankItems[i]).length());
+					characterfile.write(Integer.toString(plr.bankItems[i]), 0, Integer.toString(plr.bankItems[i]).length());
 					characterfile.write("	", 0, 1);
-					characterfile.write(Integer.toString(plr.bankItemsN[i]), 0,
-							Integer.toString(plr.bankItemsN[i]).length());
+					characterfile.write(Integer.toString(plr.bankItemsN[i]), 0, Integer.toString(plr.bankItemsN[i]).length());
 					characterfile.newLine();
 				}
 			}

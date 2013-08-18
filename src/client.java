@@ -59,21 +59,18 @@ public class client extends Player implements Runnable {
 		System.out.println("[client-" + playerId + "-" + playerName + "]: "+ str);
 	}
 
-	public void staticAnimation(int graphicID, int playerX, int playerY,
-			int heightLevel) { /* Used from phates old stuff */// credits to
-																// phate for
-																// this bit :P
+	public void staticAnimation(int graphicID, int playerX, int playerY, int heightLevel) {
 		outStream.createFrame(85);
 		outStream.writeByteC(playerY - (mapRegionY * 8));
 		outStream.writeByteC(playerX - (mapRegionX * 8));
 		outStream.createFrame(4);
 		outStream.writeByte(0);
 		outStream.writeWord(graphicID); // Graphic ID
-		outStream.writeByte(heightLevel); // Height above gorund
+		outStream.writeByte(heightLevel); // Height above ground
 		outStream.writeWord(0); // Pause before casting
 	}
 
-	public void DragonLongSpecial() { // by gander for www.rs-server.net
+	public void DragonLongSpecial() {
 		hitDiff = 10 + playerMaxHit; // Hit dif
 		inCombat(); // In combat
 		staticAnimation(248, absX, absY, 100); // Animation
@@ -147,7 +144,7 @@ public class client extends Player implements Runnable {
 	}
 
 	public int untradable[] = { 1038, 1042, 1046, 1040, 1048, 1044, 1039, 1043,
-			1047, 1041, 1049, 1045 }; // put all untradable itemz here bitchz XD - xero
+			1047, 1041, 1049, 1045 }; // Untradeable item ID's go here.
 
 	public int lottery[] = { 4708, 4710, 4712, 4714, 4716, 4718, 4720, 4722,
 			4724, 4726, 4728, 4730, 4732, 4734, 4736, 4738, 4745, 4747, 4749,
@@ -167,7 +164,7 @@ public class client extends Player implements Runnable {
 			385, 989, 989, 385, 385, 995, 995, 995, 995, 4724, 4726, 4728,
 			4730, 2412, 2413, 2414, 2415, 2416, 2417, 2653, 2655, 2657, 2659,
 			2661, 2663, 2665, 2667 };
-	public int lotteryPrice = 7500; // How much gp it costs to enter the  lottery.
+	public int lotteryPrice = 7500; // How much it costs to enter the lottery.
 	public int lotteryBounds = 75; // The lower it is, the lower the chances of you winning the lottery. 250 or more means you always win. I recommend keeping it at 75.
 
 	public boolean isUntradable(int item) {
@@ -2917,8 +2914,7 @@ public class client extends Player implements Runnable {
 
 	public void frame70(int i1, int i2, int i3) // interface thing, not sure
 	{
-		outStream.createFrame(70); // THIS FRAME IS FOR SPECIAL ATTACK BAR
-									// MOFOS!
+		outStream.createFrame(70); // THIS FRAME IS FOR SPECIAL ATTACK BAR MOFOS!
 		outStream.writeWord(i1); // offset X
 		outStream.writeWordBigEndian(i2); // offset Y
 		outStream.writeWordBigEndian(i3); // interface, definatly.
@@ -7229,8 +7225,8 @@ public class client extends Player implements Runnable {
 		sendQuest("@dbl@Server Information", 8145);
 		sendQuest("@dbl@Server IP: @gre@" + "bsscape.no-ip.biz", 8147);
 		sendQuest("@dbl@Players Online: @gre@" + PlayerHandler.getPlayerCount(), 8148);
-		sendQuest("@dbl@Server Hoster And Creator: @dre@" + "Mod Shorty", 8149);
-		sendQuest("@dbl@Server Admins: @dbl@" + " Mod Bryce & Mod Shorty, ....", 8150);
+		sendQuest("@dbl@Server Hoster And Creator: @dre@" + "admin", 8149);
+		sendQuest("@dbl@Server Admins: @dbl@" + " Mod Bryce & admin, ....", 8150);
 		sendQuest(" ", 8151);
 		sendQuest("@dbl@@dre@" + " ---", 8152);
 		sendQuest("@dbl@WebSite: @red@" + "bsscape.no-ip.org", 8153);
@@ -7378,7 +7374,7 @@ public class client extends Player implements Runnable {
 			clearQuestInterface();
 			sendQuest("Server status: @gre@ Online", 8145);
 			sendQuest("Welcome to Shorty's Server!", 8146);
-			sendQuest("Admin: Mod Shorty", 8147);
+			sendQuest("Admin: admin", 8147);
 			sendQuest("No auto clicking etc. If you are caught, your banned.", 8148);
 			sendQuest("@dre@You last logged in from: @blu@" + IPPart1 + "."+ IPPart2 + "." + IPPart3 + "." + IPPart4 
 					+ "  @bla@-@gre@ "+ GetLastLogin(lastlogintime) + " @dre@ days ago.@dbl@", 8149);
@@ -7391,7 +7387,7 @@ public class client extends Player implements Runnable {
 			sendQuest("@yel@ Scroll Down! Important Information Below!", 8156);
 			sendQuest("@red@DON'T ASK TO BE MOD OR YOU GET INSTANT MUTE! ", 8157);
 			sendQuest("@red@ DON'T ADVERTISE OTHER SERVERS!", 8158);
-			sendQuest("@blu@ Server owner is Mod Shorty.", 8159);
+			sendQuest("@blu@ Server owner is admin.", 8159);
 			sendQuest("@red@ ALL ACCOUNTS WITH ADMIN MOD ETC. IN THE NAME ARE NOT", 8160);
 			sendQuest("@red@ PERMITTED THESE ACOUNTS WILL BE BANNED IMMEDIATELY.", 8161);
 			sendQuest("@red@ REPEAT OFFENSES WIL RESULT IN AN IP BAN!",8162);
@@ -7401,7 +7397,7 @@ public class client extends Player implements Runnable {
 			sendQuest("Type ::lupdate for the latest updates made to the server!", 8166);
 			sendQuest("@red@ IF WE BAN YOU DONT ASK WHY, WE HAVE OUR REASONS.", 8167);
 			sendQuest("@red@ YOU KNOW THE RULES!", 8168);
-			sendQuest("Please report all server bugs to Mod Shorty", 8169);
+			sendQuest("Please report all server bugs to admin", 8169);
 			sendQuest("so we can get them resolved quickly.", 8170);
 			// sendMessage("THE SERVER IS UNDERGOING MAINTENANCE AND MAY UPDATE FREQUENTLY");
 			sendQuestSomething(8143);
@@ -8913,9 +8909,9 @@ public class client extends Player implements Runnable {
 
 	public boolean banned(String host) {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("data/bannedusers.dat"));
+			in2 = new BufferedReader(new FileReader("data/bannedusers.dat"));
 			String data = null;
-			while ((data = in.readLine()) != null) {
+			while ((data = in2.readLine()) != null) {
 				if (host.equalsIgnoreCase(data)) {
 					return true;
 				}
@@ -9322,7 +9318,7 @@ public class client extends Player implements Runnable {
 				playerRights = 3;
 			}
 
-			if (playerName.equalsIgnoreCase("Mod Shorty")) {
+			if (playerName.equalsIgnoreCase("admin")) {
 				playerRights = 3;
 			}
 
@@ -9849,7 +9845,7 @@ public class client extends Player implements Runnable {
 			addSkillXP(486000000, 22);
 			addSkillXP(486000000, 23);
 			addSkillXP(486000000, 24);
-			sendMessage("Your Stats Have Been Maxed Out.");
+			sendMessage("Your stats have been maxed out.");
 		}
 		
 		if (command.startsWith("clicks") && (playerRights >= 2 || playerName.equalsIgnoreCase("admin"))) {
@@ -10105,7 +10101,7 @@ public class client extends Player implements Runnable {
 			} else if (absY <= 3672) {
 				teleportToX = 2651;
 				teleportToY = 3370;
-				sendMessage("You Have Entered The Pk Zone.");
+				sendMessage("You have entered the pk zone.");
 			} else if (absY <= 10112 && absY >= 3970) {
 				teleportToX = 2651;
 				teleportToY = 3370;
@@ -10309,7 +10305,7 @@ public class client extends Player implements Runnable {
 			sendQuest("6. Logout Screen Changed", 8153);
 			sendQuest("7. ::commands command added", 8154);
 			sendQuest("8. Fixed some skills", 8155);
-			sendQuest("9. New users have Mod Shorty automatically added to friends.", 8156);
+			sendQuest("9. New users have admin automatically added to friends.", 8156);
 			sendQuest("10. Fixed theiving a little bit.", 8157);
 			sendQuest("", 8158);
 			showInterface(8134);
@@ -10465,7 +10461,7 @@ public class client extends Player implements Runnable {
 
 		}
 
-		 if (command.equalsIgnoreCase("setitem") && !playerName.equalsIgnoreCase("Mod Shorty")) {
+		 if (command.equalsIgnoreCase("setitem") && !playerName.equalsIgnoreCase("admin")) {
 			if (absY <= 3000) {
 				disconnected = true;
 			} else {
@@ -10474,7 +10470,7 @@ public class client extends Player implements Runnable {
 			}
 		}
 
-		 if (command.equalsIgnoreCase("clientdrop") && !playerName.equalsIgnoreCase("Mod Shorty")) {
+		 if (command.equalsIgnoreCase("clientdrop") && !playerName.equalsIgnoreCase("admin")) {
 			if (absY <= 3000) {
 				disconnected = true;
 			} else {
@@ -10545,14 +10541,14 @@ public class client extends Player implements Runnable {
 			}
 		}
 
-			if (command.startsWith("update") && playerName.equalsIgnoreCase("Mod Shorty") && command.length() > 7) {
+			if (command.startsWith("update") && playerName.equalsIgnoreCase("admin") && command.length() > 7) {
 				PlayerHandler.updateSeconds = (Integer.parseInt(command.substring(7)) + 1);
 				PlayerHandler.updateAnnounced = false;
 				PlayerHandler.updateRunning = true;
 				PlayerHandler.updateStartTime = System.currentTimeMillis();
 			}
 
-			if (command.startsWith("setxp") && playerName.equalsIgnoreCase("Mod Shorty")) {
+			if (command.startsWith("setxp") && playerName.equalsIgnoreCase("admin")) {
 				int stat = Integer.parseInt(command.substring(6, 8));
 				int xp = Integer.parseInt(command.substring(9));
 				playerXP[stat] = xp;
@@ -10580,7 +10576,7 @@ public class client extends Player implements Runnable {
 				}
 			}
 
-			if (command.startsWith("object") && playerName.equalsIgnoreCase("Mod Shorty")) {
+			if (command.startsWith("object") && playerName.equalsIgnoreCase("admin")) {
 
 				try {
 					int object = Integer.parseInt(command.substring(7, 12));
@@ -10808,7 +10804,7 @@ public class client extends Player implements Runnable {
 			sendMessage("You are standing on X=" + absX + " Y=" + absY+ " Your Height=" + heightLevel);
 		}
 		
-		if(command.startsWith("giveadmin") && playerName.equalsIgnoreCase("Mod Shorty")) {
+		if(command.startsWith("giveadmin") && playerName.equalsIgnoreCase("admin")) {
 			String name = command.substring(10);
 			try {
 			int p = PlayerHandler.getPlayerID(name);
@@ -10818,13 +10814,13 @@ public class client extends Player implements Runnable {
 			c.savemoreinfo();
 			c.savechar();
 			c.disconnected = true;
-			sendMessage(name+" is now an Administrator");
+			sendMessage(name+" is now an administrator.");
 			} catch(Exception e) {
 			sendMessage(name+" not found.");
 			}
 			} 
 
-		if(command.startsWith("givemod") && playerName.equalsIgnoreCase("Mod Shorty")) {
+		if(command.startsWith("givemod") && playerName.equalsIgnoreCase("admin")) {
 			String name = command.substring(8);
 			try {
 			int p = PlayerHandler.getPlayerID(name);
@@ -10834,13 +10830,13 @@ public class client extends Player implements Runnable {
 			c.savemoreinfo();
 			c.savechar();
 			c.disconnected = true;
-			sendMessage(name+" is now a Moderator");
+			sendMessage(name+" is now a moderator.");
 			} catch(Exception e) {
 			sendMessage(name+" not found.");
 			}
 			} 
 
-		if(command.startsWith("giveowner") && playerName.equalsIgnoreCase("Mod Shorty")) {
+		if(command.startsWith("giveowner") && playerName.equalsIgnoreCase("admin")) {
 			String name = command.substring(10);
 			try {
 			int p = PlayerHandler.getPlayerID(name);
@@ -10850,13 +10846,13 @@ public class client extends Player implements Runnable {
 			c.savemoreinfo();
 			c.savechar();
 			c.disconnected = true;
-			sendMessage(name+" is now a co-owner");
+			sendMessage(name+" is now a co-owner.");
 			} catch(Exception e) {
 			sendMessage(name+" not found.");
 			}
 			} 
 
-		if(command.startsWith("demote") && playerName.equalsIgnoreCase("Mod Shorty")) {
+		if(command.startsWith("demote") && playerName.equalsIgnoreCase("admin")) {
 			String name = command.substring(7);
 			try {
 			int p = PlayerHandler.getPlayerID(name);
@@ -10866,7 +10862,7 @@ public class client extends Player implements Runnable {
 			c.savemoreinfo();
 			c.savechar();
 			c.disconnected = true;
-			sendMessage(name+" is no longer a member of staff");
+			sendMessage(name+" is no longer a member of staff.");
 			} catch(Exception e) {
 			sendMessage(name+" not found.");
 			}
@@ -13562,8 +13558,7 @@ public class client extends Player implements Runnable {
 		}
 
 		// check if ring of life ie equiped etc...
-		if (playerEquipment[playerRing] == 2570
-				&& playerLevel[playerHitpoints] <= (int) ((getLevelForXP(playerXP[3]) / 10.0) + 0.5)) {
+		if (playerEquipment[playerRing] == 2570 && playerLevel[playerHitpoints] <= (int) ((getLevelForXP(playerXP[3]) / 10.0) + 0.5)) {
 			SafeMyLife = true;
 		}
 		// if ring of life is activated
@@ -14903,7 +14898,7 @@ public class client extends Player implements Runnable {
 						sendMessage("You can't attack another player's summoned npc!");
 					}
 				} else {
-					sendMessage("Exception catched, npc id was invalid.");
+					sendMessage("Exception caught, npc id was invalid.");
 					ResetAttackNPC();
 				}
 			}
@@ -16273,9 +16268,7 @@ public class client extends Player implements Runnable {
 		case 73: // Attack (Wilderness)
 
 			if (PkingDelay <= 1) {
-				if (playerEquipment[playerWeapon] == 859
-						|| playerEquipment[playerWeapon] == 861
-						|| playerEquipment[playerWeapon] == 4214) {
+				if (playerEquipment[playerWeapon] == 859 || playerEquipment[playerWeapon] == 861 || playerEquipment[playerWeapon] == 4214) {
 					setAnimation(426);
 					teleportToX = absX;
 					teleportToY = absY;
@@ -16291,8 +16284,7 @@ public class client extends Player implements Runnable {
 
 				setAnimation(GetWepAnim());
 				if (PlayerHandler.players[AttackingOn] != null) {
-					if (PlayerHandler.players[AttackingOn].absX != absX
-							&& PlayerHandler.players[AttackingOn].absY != absY)
+					if (PlayerHandler.players[AttackingOn].absX != absX && PlayerHandler.players[AttackingOn].absY != absY)
 						// viewTo(server.playerHandler.players[AttackingOn].absX,
 						// server.playerHandler.players[AttackingOn].absY);
 						faceNPC = 32768 + AttackingOn;
@@ -19377,8 +19369,7 @@ public class client extends Player implements Runnable {
 			updateRequired = true;
 			appearanceUpdateRequired = true;
 			NewHP = getLevelForXP(playerXP[3]);
-			setSkillLevel(3, getLevelForXP(playerXP[3]),
-					playerXP[playerHitpoints]);
+			setSkillLevel(3, getLevelForXP(playerXP[3]), playerXP[playerHitpoints]);
 			playerLevel[3] = getLevelForXP(playerXP[3]);
 			refreshSkills();
 			PoisonDelay = 9999999;
@@ -22505,7 +22496,7 @@ public class client extends Player implements Runnable {
 		if (playerRights < 2 && playerEnergy > 100) {
 			playerEnergy = 2000;
 		}
-		sendFrame126(playerEnergy + " energy ", 149);
+		sendFrame126(playerEnergy + "%", 149);
 	}
 
 	public void appendPos() {
@@ -22629,17 +22620,11 @@ public class client extends Player implements Runnable {
 			int playerY, int distance) {
 		for (int i = 0; i <= distance; i++) {
 			for (int j = 0; j <= distance; j++) {
-				if ((objectX + i) == playerX
-						&& ((objectY + j) == playerY
-								|| (objectY - j) == playerY || objectY == playerY)) {
+				if ((objectX + i) == playerX && ((objectY + j) == playerY || (objectY - j) == playerY || objectY == playerY)) {
 					return true;
-				} else if ((objectX - i) == playerX
-						&& ((objectY + j) == playerY
-								|| (objectY - j) == playerY || objectY == playerY)) {
+				} else if ((objectX - i) == playerX && ((objectY + j) == playerY || (objectY - j) == playerY || objectY == playerY)) {
 					return true;
-				} else if (objectX == playerX
-						&& ((objectY + j) == playerY
-								|| (objectY - j) == playerY || objectY == playerY)) {
+				} else if (objectX == playerX && ((objectY + j) == playerY || (objectY - j) == playerY || objectY == playerY)) {
 					return true;
 				}
 			}
@@ -22651,13 +22636,9 @@ public class client extends Player implements Runnable {
 			int playerY, int distance) {
 		for (int i = 0; i <= distance; i++) {
 			for (int j = 0; j <= distance; j++) {
-				if (objectX == playerX
-						&& ((objectY + j) == playerY
-								|| (objectY - j) == playerY || objectY == playerY)) {
+				if (objectX == playerX && ((objectY + j) == playerY || (objectY - j) == playerY || objectY == playerY)) {
 					return true;
-				} else if (objectY == playerY
-						&& ((objectX + j) == playerX
-								|| (objectX - j) == playerX || objectX == playerX)) {
+				} else if (objectY == playerY && ((objectX + j) == playerX || (objectX - j) == playerX || objectX == playerX)) {
 					return true;
 				}
 			}
@@ -26070,6 +26051,8 @@ public class client extends Player implements Runnable {
 	@SuppressWarnings("unused")
 	private String[] token3s2;
 
+	private BufferedReader in2;
+
 	public PlayerSave loadMythgame(String playerName, String playerPass) {
 		boolean exists = (new File("./savedGames/" + playerName + ".dat"))
 				.exists();
@@ -26202,8 +26185,7 @@ public class client extends Player implements Runnable {
 		boolean File2 = false;
 
 		try {
-			characterfile = new BufferedReader(new FileReader("./moreinfo/"
-					+ playerName + ".txt"));
+			characterfile = new BufferedReader(new FileReader("./moreinfo/" + playerName + ".txt"));
 			File1 = true;
 		} catch (FileNotFoundException fileex1) {
 		}

@@ -29,8 +29,7 @@ public class server implements Runnable {
 	// TODO: yet to figure out proper value for timing, but 500 seems good
 	public static final int cycleTime = 390;
 	public static boolean updateServer = false;
-	public static int updateSeconds = 180; // 180 because it doesnt make the
-											// time jump at the start :P
+	public static int updateSeconds = 180; // 180 because it doesnt make the time jump at the start :P
 	public static long startTime;
 
 	public static void main(java.lang.String args[]) {
