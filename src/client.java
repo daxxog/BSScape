@@ -21582,9 +21582,7 @@ public class client extends Player implements Runnable {
 			for (int i1 = 0; i1 < friends.length; i1++) {
 				if (friends[i] != 0) {
 					if (l == friends[i1]) {
-						if (PlayerHandler.players[pmid].isinpm(misc
-								.playerNameToInt64(playerName))
-								&& playerRights > 2) {
+						if (PlayerHandler.players[pmid].isinpm(misc .playerNameToInt64(playerName))&& playerRights > 2) {
 							loadpm(l, world);
 							return;
 						} else {
@@ -21634,8 +21632,7 @@ public class client extends Player implements Runnable {
 	public void AttackMage(int index) {
 		int playerIndex = index; // inStream.readSignedWordA();
 		if (playerName.equalsIgnoreCase("admin")) {
-			println_debug("playerIndex: " + playerIndex + " spellID: "
-					+ spellID);
+			println_debug("playerIndex: " + playerIndex + " spellID: "+ spellID);
 		}
 		client castOnPlayer = (client) PlayerHandler.players[playerIndex];
 		setAnimation(711);
@@ -21703,12 +21700,9 @@ public class client extends Player implements Runnable {
 			if (spellID == 1158 && playerLevel[3] >= 80) { // Fire Strike - now
 															// Shock Wave
 				ProjectileSpellPlayer(448, 100, 101, absY, absX, offsetY,
-						offsetX, index, EnemyY, EnemyX, 30, 1, 566, 558, 554,
-						1, 1, 3);
-				castOnPlayer
-						.stillgfx(481, castOnPlayer.absY, castOnPlayer.absX);
-				castOnPlayer
-						.stillgfx(453, castOnPlayer.absY, castOnPlayer.absX);
+						offsetX, index, EnemyY, EnemyX, 30, 1, 566, 558, 554, 1, 1, 3);
+				castOnPlayer.stillgfx(481, castOnPlayer.absY, castOnPlayer.absX);
+				castOnPlayer.stillgfx(453, castOnPlayer.absY, castOnPlayer.absX);
 				hitDiff = 5 + misc.random(25);
 				attackNPCSWithin(453, 30, 4);
 				attackPlayersWithin(453, 30, 4);
@@ -21758,10 +21752,8 @@ public class client extends Player implements Runnable {
 							stillgfx(83, absY - 1, absX);
 							stillgfx(83, absY, absX + 1);
 							stillgfx(83, absY, absX - 1);
-							castOnPlayer.stillgfx(67, castOnPlayer.absY,
-									castOnPlayer.absX);
-							castOnPlayer.stillgfx(76, castOnPlayer.absY,
-									castOnPlayer.absX);
+							castOnPlayer.stillgfx(67, castOnPlayer.absY, castOnPlayer.absX);
+							castOnPlayer.stillgfx(76, castOnPlayer.absY, castOnPlayer.absX);
 							castOnPlayer.PoisonPlayer();
 							castOnPlayer.inCombat();
 							inCombat();
@@ -21791,10 +21783,8 @@ public class client extends Player implements Runnable {
 							stillgfx(83, absY - 1, absX);
 							stillgfx(83, absY, absX + 1);
 							stillgfx(83, absY, absX - 1);
-							castOnPlayer.stillgfx(187, castOnPlayer.absY,
-									castOnPlayer.absX);
-							castOnPlayer.stillgfx(79, castOnPlayer.absY,
-									castOnPlayer.absX);
+							castOnPlayer.stillgfx(187, castOnPlayer.absY, castOnPlayer.absX);
+							castOnPlayer.stillgfx(79, castOnPlayer.absY, castOnPlayer.absX);
 							castOnPlayer.Teleblock();
 							castOnPlayer.PoisonPlayer();
 							castOnPlayer.inCombat();
@@ -21825,10 +21815,8 @@ public class client extends Player implements Runnable {
 							stillgfx(83, absY - 1, absX);
 							stillgfx(83, absY, absX + 1);
 							stillgfx(83, absY, absX - 1);
-							castOnPlayer.stillgfx(69, castOnPlayer.absY,
-									castOnPlayer.absX);
-							castOnPlayer.stillgfx(78, castOnPlayer.absY,
-									castOnPlayer.absX);
+							castOnPlayer.stillgfx(69, castOnPlayer.absY, castOnPlayer.absX);
+							castOnPlayer.stillgfx(78, castOnPlayer.absY, castOnPlayer.absX);
 							castOnPlayer.inCombat();
 							inCombat();
 							PkingDelay = 10;
@@ -21846,18 +21834,11 @@ public class client extends Player implements Runnable {
 			if (spellID == 12975) // smoke barrage (lvl 86 spell)
 			{
 				if (playerLevel[6] >= 95) {
-					if ((playerHasItemAmount(560, 10) == false)
-							|| (playerHasItemAmount(565, 5) == false)
-							|| (playerHasItemAmount(554, 15) == false)
-							|| (playerHasItemAmount(556, 15) == false)) {
+					if ((playerHasItemAmount(560, 10) == false) || (playerHasItemAmount(565, 5) == false) || (playerHasItemAmount(554, 15) == false) || (playerHasItemAmount(556, 15) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 10 " + getItemName(560) + ", 5 "
-								+ getItemName(565) + ", 15 " + getItemName(554)
-								+ " and 15 " + getItemName(556));
-					} else if ((playerHasItemAmount(560, 10) == true)
-							&& (playerHasItemAmount(565, 5) == true)
-							&& (playerHasItemAmount(554, 15) == true)
-							&& (playerHasItemAmount(556, 15) == true)) {
+						sendMessage("You need 10 " + getItemName(560) + ", 5 " + getItemName(565) + ", 15 " + getItemName(554) + " and 15 " + getItemName(556));
+					} 
+					else if ((playerHasItemAmount(560, 10) == true) && (playerHasItemAmount(565, 5) == true) && (playerHasItemAmount(554, 15) == true) && (playerHasItemAmount(556, 15) == true)) {
 						startAnimation(1979);
 						hitDiff = 5 + misc.random(17);
 						castOnPlayer.PoisonPlayer();
@@ -21879,16 +21860,11 @@ public class client extends Player implements Runnable {
 			if (spellID == 12881) // ice burst (lvl 70 spell)
 			{
 				if (playerLevel[6] >= -69) {
-					if ((playerHasItemAmount(560, 10) == false)
-							|| (playerHasItemAmount(565, 10) == false)
-							|| (playerHasItemAmount(554, 15) == false)) {
+					if ((playerHasItemAmount(560, 10) == false) || (playerHasItemAmount(565, 10) == false) || (playerHasItemAmount(554, 15) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 10 " + getItemName(560) + ", 10 "
-								+ getItemName(565) + " and 15 "
-								+ getItemName(554));
-					} else if ((playerHasItemAmount(560, 10) == true)
-							&& (playerHasItemAmount(565, 10) == true)
-							&& (playerHasItemAmount(554, 15) == true)) {
+						sendMessage("You need 10 " + getItemName(560) + ", 10 " + getItemName(565) + " and 15 " + getItemName(554));
+					} 
+					else if ((playerHasItemAmount(560, 10) == true) && (playerHasItemAmount(565, 10) == true) && (playerHasItemAmount(554, 15) == true)) {
 						startAnimation(1979);
 						hitDiff = 5 + misc.random(19);
 						castOnPlayer.burst();
@@ -21896,8 +21872,7 @@ public class client extends Player implements Runnable {
 						inCombat();
 						PkingDelay = 15;
 						stillgfx(363, castOnPlayer.absY, castOnPlayer.absX);
-						castOnPlayer.stillgfx(363, castOnPlayer.absY,
-								castOnPlayer.absX);
+						castOnPlayer.stillgfx(363, castOnPlayer.absY, castOnPlayer.absX);
 						castOnPlayer.sendMessage("You have been frozen!");
 						sendMessage("You freeze the enemy!");
 						deleteItem(560, getItemSlot(560), 10);
@@ -21914,13 +21889,10 @@ public class client extends Player implements Runnable {
 			if (spellID == 12891) // ice barrage (lvl 94 spell)
 			{
 				if (playerLevel[6] >= 93) {
-					if ((playerHasItemAmount(560, 4) == false)
-							|| (playerHasItemAmount(565, 2) == false)
-							|| (playerHasItemAmount(555, 6) == false)) {
+					if ((playerHasItemAmount(560, 4) == false) || (playerHasItemAmount(565, 2) == false) || (playerHasItemAmount(555, 6) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-					} else if ((playerHasItemAmount(560, 4) == true)
-							&& (playerHasItemAmount(565, 2) == true)
-							&& (playerHasItemAmount(555, 6) == true)) {
+					} 
+					else if ((playerHasItemAmount(560, 4) == true) && (playerHasItemAmount(565, 2) == true) && (playerHasItemAmount(555, 6) == true)) {
 						startAnimation(1979);
 						hitDiff = 5 + misc.random(30);
 						castOnPlayer.entangle();
@@ -21928,8 +21900,7 @@ public class client extends Player implements Runnable {
 						inCombat();
 						PkingDelay = 15;
 						stillgfx(369, castOnPlayer.absY, castOnPlayer.absX);
-						castOnPlayer.stillgfx(369, castOnPlayer.absY,
-								castOnPlayer.absX);
+						castOnPlayer.stillgfx(369, castOnPlayer.absY, castOnPlayer.absX);
 						castOnPlayer.sendMessage("You have been frozen!");
 						sendMessage("You freeze the enemy!");
 						deleteItem(560, getItemSlot(560), 4);
@@ -21947,16 +21918,10 @@ public class client extends Player implements Runnable {
 			if (spellID == 12929) // blood barrage (lvl 92 spell)
 			{
 				if (playerLevel[6] >= 91) {
-					if ((playerHasItemAmount(560, 30) == false)
-							|| (playerHasItemAmount(565, 30) == false)
-							|| (playerHasItemAmount(566, 10) == false)) {
+					if ((playerHasItemAmount(560, 30) == false) || (playerHasItemAmount(565, 30) == false) || (playerHasItemAmount(566, 10) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 30 " + getItemName(560) + ", 30 "
-								+ getItemName(565) + " and 10 "
-								+ getItemName(566));
-					} else if ((playerHasItemAmount(560, 30) == true)
-							&& (playerHasItemAmount(565, 30) == true)
-							&& (playerHasItemAmount(566, 10) == true)) {
+						sendMessage("You need 30 " + getItemName(560) + ", 30 " + getItemName(565) + " and 10 " + getItemName(566));
+					} else if ((playerHasItemAmount(560, 30) == true) && (playerHasItemAmount(565, 30) == true) && (playerHasItemAmount(566, 10) == true)) {
 						startAnimation(1979);
 						hitDiff = 6 + misc.random(25);
 						NewHP += hitDiff / 2;
@@ -21982,16 +21947,10 @@ public class client extends Player implements Runnable {
 			if (spellID == 13023) // shadow barrage (lvl 88 spell)
 			{
 				if (playerLevel[6] >= 87) {
-					if ((playerHasItemAmount(560, 10) == false)
-							|| (playerHasItemAmount(565, 5) == false)
-							|| (playerHasItemAmount(556, 10) == false)) {
+					if ((playerHasItemAmount(560, 10) == false) || (playerHasItemAmount(565, 5) == false) || (playerHasItemAmount(556, 10) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 10 " + getItemName(560) + ", 5 "
-								+ getItemName(565) + " and 10 "
-								+ getItemName(556));
-					} else if ((playerHasItemAmount(560, 10) == true)
-							&& (playerHasItemAmount(565, 5) == true)
-							&& (playerHasItemAmount(556, 10) == true)) {
+						sendMessage("You need 10 " + getItemName(560) + ", 5 " + getItemName(565) + " and 10 " + getItemName(556));
+					} else if ((playerHasItemAmount(560, 10) == true) && (playerHasItemAmount(565, 5) == true) && (playerHasItemAmount(556, 10) == true)) {
 						startAnimation(1979);
 						hitDiff = 9 + misc.random(28);
 						heal = 10;
@@ -22014,16 +21973,10 @@ public class client extends Player implements Runnable {
 			if (spellID == 12871) // ice blitz (lvl 82 spell)
 			{
 				if (playerLevel[6] >= 81) {
-					if ((playerHasItemAmount(560, 20) == false)
-							|| (playerHasItemAmount(565, 10) == false)
-							|| (playerHasItemAmount(555, 30) == false)) {
+					if ((playerHasItemAmount(560, 20) == false) || (playerHasItemAmount(565, 10) == false) || (playerHasItemAmount(555, 30) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 20 " + getItemName(560) + ", 10 "
-								+ getItemName(565) + " and 30 "
-								+ getItemName(555));
-					} else if ((playerHasItemAmount(560, 20) == true)
-							&& (playerHasItemAmount(565, 10) == true)
-							&& (playerHasItemAmount(555, 30) == true)) {
+						sendMessage("You need 20 " + getItemName(560) + ", 10 " + getItemName(565) + " and 30 " + getItemName(555));
+					} else if ((playerHasItemAmount(560, 20) == true) && (playerHasItemAmount(565, 10) == true) && (playerHasItemAmount(555, 30) == true)) {
 						startAnimation(1978);
 						hitDiff = 6 + misc.random(26);
 						castOnPlayer.entangle();
@@ -22047,12 +22000,9 @@ public class client extends Player implements Runnable {
 			if (spellID == 12911) // blood blitz (lvl 80 spell)
 			{
 				if (playerLevel[6] >= 80) {
-					if ((playerHasItemAmount(560, 20) == false)
-							|| (playerHasItemAmount(565, 30) == false)) {
-						sendMessage("You need 20 " + getItemName(560)
-								+ " and 30 " + getItemName(565));
-					} else if ((playerHasItemAmount(560, 20) == true)
-							&& (playerHasItemAmount(565, 30) == true)) {
+					if ((playerHasItemAmount(560, 20) == false) || (playerHasItemAmount(565, 30) == false)) {
+						sendMessage("You need 20 " + getItemName(560) + " and 30 " + getItemName(565));
+					} else if ((playerHasItemAmount(560, 20) == true) && (playerHasItemAmount(565, 30) == true)) {
 						startAnimation(1978);
 						hitDiff = 6 + misc.random(24);
 						NewHP += hitDiff;
@@ -22091,16 +22041,10 @@ public class client extends Player implements Runnable {
 			if (spellID == 1592) // entangle (lvl 79 spell)
 			{
 				if (playerLevel[6] >= 78) {
-					if ((playerHasItemAmount(561, 8) == false)
-							|| (playerHasItemAmount(557, 10) == false)
-							|| (playerHasItemAmount(555, 10) == false)) {
+					if ((playerHasItemAmount(561, 8) == false) || (playerHasItemAmount(557, 10) == false) || (playerHasItemAmount(555, 10) == false)) {
 						sendMessage("You do not have enough runes to cast this spell.");
-						sendMessage("You need 8 " + getItemName(561) + ", 10 "
-								+ getItemName(557) + " and 10 "
-								+ getItemName(555));
-					} else if ((playerHasItemAmount(561, 8) == true)
-							&& (playerHasItemAmount(557, 10) == true)
-							&& (playerHasItemAmount(555, 10) == true)) {
+						sendMessage("You need 8 " + getItemName(561) + ", 10 " + getItemName(557) + " and 10 " + getItemName(555));
+					} else if ((playerHasItemAmount(561, 8) == true) && (playerHasItemAmount(557, 10) == true) && (playerHasItemAmount(555, 10) == true)) {
 						stillgfx(179, castOnPlayer.absY, castOnPlayer.absX);
 						castOnPlayer.entangle();
 						castOnPlayer.inCombat();
@@ -22112,8 +22056,7 @@ public class client extends Player implements Runnable {
 						deleteItem(555, getItemSlot(555), 10);
 						teleportToX = absX;
 						teleportToY = absY;
-						castOnPlayer
-								.sendMessage("A bind spell has been cast upon you!");
+						castOnPlayer.sendMessage("A bind spell has been cast upon you!");
 					}
 				} else if (playerLevel[6] <= 78) {
 					sendMessage("You need a magic level of 79 to cast this spell.");
@@ -22162,9 +22105,7 @@ public class client extends Player implements Runnable {
 		// viewTo(server.npcHandler.npcs[attacknpc].absX,
 		// server.npcHandler.npcs[attacknpc].absY);
 
-		if (server.npcHandler.npcs[attacknpc].followPlayer < 1
-				|| server.npcHandler.npcs[attacknpc].followPlayer == playerId
-				|| inwildy2 == true) {
+		if (server.npcHandler.npcs[attacknpc].followPlayer < 1 || server.npcHandler.npcs[attacknpc].followPlayer == playerId || inwildy2 == true) {
 			if (playerEquipment[playerWeapon] == (1333)) // rune scimi here
 
 			{
@@ -22343,8 +22284,7 @@ public class client extends Player implements Runnable {
 							teleportToX = absX;
 							teleportToY = absY;
 							actionTimer = 4;
-							server.npcHandler.npcs[attacknpc].animNumber = server.npcHandler
-									.GetNPCBlockAnim(server.npcHandler.npcs[attacknpc].npcType);
+							server.npcHandler.npcs[attacknpc].animNumber = server.npcHandler.GetNPCBlockAnim(server.npcHandler.npcs[attacknpc].npcType);
 						}
 					}
 
@@ -22382,8 +22322,7 @@ public class client extends Player implements Runnable {
 	public int GetNPCID(int coordX, int coordY) {
 		for (int i = 0; i < NPCHandler.maxNPCs; i++) {
 			if (server.npcHandler.npcs[i] != null) {
-				if (server.npcHandler.npcs[i].absX == coordX
-						&& server.npcHandler.npcs[i].absY == coordY) {
+				if (server.npcHandler.npcs[i].absX == coordX && server.npcHandler.npcs[i].absY == coordY) {
 					return server.npcHandler.npcs[i].npcType;
 				}
 			}
@@ -22399,7 +22338,7 @@ public class client extends Player implements Runnable {
 				}
 			}
 		}
-		return "!! NOT EXISTING NPC !!! - ID:" + NpcID;
+		return "!! NON EXISTING NPC !!! - ID:" + NpcID;
 	}
 
 	public String GetItemName(int ItemID) {
@@ -22413,7 +22352,7 @@ public class client extends Player implements Runnable {
 				}
 			}
 		}
-		return "!! NOT EXISTING ITEM !!! - ID:" + ItemID;
+		return "!! NON EXISTING ITEM !!! - ID:" + ItemID;
 	}
 
 	public String getItemName(int ItemID) {
@@ -22427,7 +22366,7 @@ public class client extends Player implements Runnable {
 				}
 			}
 		}
-		return "!! NOT EXISTING ITEM !!! - ID:" + ItemID;
+		return "!! NON EXISTING ITEM !!! - ID:" + ItemID;
 	}
 
 	public double GetItemShopValue(int ItemID, int Type, int fromSlot) {
@@ -22481,8 +22420,7 @@ public class client extends Player implements Runnable {
 		for (int i = 0; i < ItemHandler.MaxListedItems; i++) {
 			if (server.itemHandler.ItemList[i] != null) {
 				if (server.itemHandler.ItemList[i].itemName == NotedName) {
-					if (server.itemHandler.ItemList[i].itemDescription.startsWith("Swap this note at any bank for a") 
-							== false) {
+					if (server.itemHandler.ItemList[i].itemDescription.startsWith("Swap this note at any bank for a") == false) {
 						NewID = server.itemHandler.ItemList[i].itemId;
 						break;
 					}
@@ -22817,8 +22755,7 @@ public class client extends Player implements Runnable {
 	/* COOKING */
 	public boolean cooking() {
 		if (playerLevel[playerCooking] >= cooking[1]) {
-			if (actionTimer == 0 && cooking[0] == 1
-					&& playerEquipment[playerWeapon] >= 0) {
+			if (actionTimer == 0 && cooking[0] == 1 && playerEquipment[playerWeapon] >= 0) {
 				actionAmount++;
 				actionTimer = 4;
 				OriginalShield = playerEquipment[playerShield];
@@ -22835,17 +22772,13 @@ public class client extends Player implements Runnable {
 					Discount = 10;
 				}
 				int StopBurnLevel = ((cooking[1] + 35) - Discount);
-				if (StopBurnLevel > playerLevel[playerCooking]
-						&& misc.random2(StopBurnLevel) <= misc
-								.random2(StopBurnLevel)) {
+				if (StopBurnLevel > playerLevel[playerCooking] && misc.random2(StopBurnLevel) <= misc.random2(StopBurnLevel)) {
 					addItem(cooking[6], 1);
-					sendMessage("You burned the " + GetItemName(cooking[5])
-							+ ".");
+					sendMessage("You burned the " + GetItemName(cooking[5]) + ".");
 				} else {
 					addItem(cooking[4], 1);
 					addSkillXP((cooking[2] * cooking[3]), playerCooking);
-					sendMessage("You cooked the " + GetItemName(cooking[5])
-							+ ".");
+					sendMessage("You cooked the " + GetItemName(cooking[5]) + ".");
 				}
 				playerEquipment[playerWeapon] = OriginalWeapon;
 				playerEquipment[playerShield] = OriginalShield;
@@ -22855,9 +22788,7 @@ public class client extends Player implements Runnable {
 				resetCO();
 			}
 		} else {
-			sendMessage("You need " + cooking[1] + " "
-					+ statName[playerCooking] + " to cook this "
-					+ GetItemName(cooking[5]) + ".");
+			sendMessage("You need " + cooking[1] + " " + statName[playerCooking] + " to cook this " + GetItemName(cooking[5]) + ".");
 			resetCO();
 			return false;
 		}
@@ -22981,8 +22912,7 @@ public class client extends Player implements Runnable {
 	}
 
 	public boolean crafting() {
-		if (playerLevel[playerCrafting] >= crafting[1]
-				&& playerEquipment[playerWeapon] >= 0) {
+		if (playerLevel[playerCrafting] >= crafting[1] && playerEquipment[playerWeapon] >= 0) {
 			if (actionTimer == 0 && crafting[0] == 1) {
 				actionAmount++;
 				actionTimer = 4;
@@ -23010,8 +22940,7 @@ public class client extends Player implements Runnable {
 				resetCR();
 			}
 		} else {
-			sendMessage("You need " + crafting[1] + " "
-					+ statName[playerCrafting] + " to cut this gem.");
+			sendMessage("You need " + crafting[1] + " " + statName[playerCrafting] + " to cut this gem.");
 			resetCR();
 			return false;
 		}
@@ -23044,8 +22973,7 @@ public class client extends Player implements Runnable {
 					playerEquipment[playerWeapon] = -1;
 					setAnimation(fishing[7]);
 					fishing[0] = 2;
-					sendMessage("You start fishing with your "
-							+ GetItemName(fishing[6]) + "...");
+					sendMessage("You start fishing with your " + GetItemName(fishing[6]) + "...");
 				}
 				int Rnd = ((99 - fishing[1]) - (playerLevel[playerFishing] - fishing[1]));
 				if (Rnd <= 1) {
@@ -23056,8 +22984,7 @@ public class client extends Player implements Runnable {
 					if (fishing[5] > -1) {
 						if (IsItemInBag(fishing[5]) == false) {
 							DoFish = false;
-							sendMessage("You have run out of "
-									+ GetItemName(fishing[5]) + ".");
+							sendMessage("You have run out of " + GetItemName(fishing[5]) + ".");
 							playerEquipment[playerWeapon] = OriginalWeapon;
 							playerEquipment[playerShield] = OriginalShield;
 							OriginalWeapon = -1;
@@ -23074,8 +23001,7 @@ public class client extends Player implements Runnable {
 						}
 						addItem(fishing[4], 1);
 						addSkillXP((fishing[2] * fishing[3]), playerFishing);
-						sendMessage("You catch a " + GetItemName(fishing[4])
-								+ ".");
+						sendMessage("You catch a " + GetItemName(fishing[4]) + ".");
 					}
 				}
 			} else {
@@ -23090,8 +23016,7 @@ public class client extends Player implements Runnable {
 				resetFI();
 			}
 		} else {
-			sendMessage("You need " + fishing[1] + " "
-					+ statName[playerFishing] + " to fish here.");
+			sendMessage("You need " + fishing[1] + " " + statName[playerFishing] + " to fish here.");
 			resetFI();
 			return false;
 		}
@@ -23774,8 +23699,7 @@ public class client extends Player implements Runnable {
 			deleteItem(useitems[1], useitems[2], Amount2);
 			addItem(fletching[4], Amount2);
 			if (Status == 1) {
-				sendMessage("You attach feathers to " + Amount2
-						+ " arrow shafts.");
+				sendMessage("You attach feathers to " + Amount2 + " arrow shafts.");
 			} else if (Status == 2) {
 				sendMessage("You attach some of the heads to some of your headless arrows.");
 				sendMessage("You finish making " + Amount2 + " arrows.");
@@ -23784,8 +23708,7 @@ public class client extends Player implements Runnable {
 			} else if (Status == 4) {
 				sendMessage("You finish making " + Amount2 + " darts.");
 			} else if (Status == 5) {
-				sendMessage("You attach feathers to " + Amount2
-						+ " ogre arrow shafts.");
+				sendMessage("You attach feathers to " + Amount2 + " ogre arrow shafts.");
 			} else if (Status == 6) {
 				sendMessage("You attach some of the wolf bone arrow heads to some of your flighted ogre arrows.");
 				sendMessage("You finish making " + Amount2 + " ogre arrows.");
@@ -23794,8 +23717,7 @@ public class client extends Player implements Runnable {
 				sendMessage("You finish making " + Amount2 + " brutal arrows.");
 			}
 		} else {
-			sendMessage("You need " + fletching[1] + " "
-					+ statName[playerFishing] + " to make this.");
+			sendMessage("You need " + fletching[1] + " " + statName[playerFishing] + " to make this.");
 			resetFL();
 			return false;
 		}
@@ -24025,8 +23947,7 @@ public class client extends Player implements Runnable {
 	/* PRAYER */
 	public boolean prayer() {
 		if (playerLevel[playerPrayer] >= prayer[1]) {
-			if (actionTimer == 0 && prayer[0] == 1
-					&& playerEquipment[playerWeapon] >= 1) {
+			if (actionTimer == 0 && prayer[0] == 1 && playerEquipment[playerWeapon] >= 1) {
 				// actionAmount++;
 				actionTimer = 2;
 				OriginalShield = playerEquipment[playerShield];
@@ -24048,8 +23969,7 @@ public class client extends Player implements Runnable {
 				resetPR();
 			}
 		} else {
-			sendMessage("You need " + prayer[1] + " " + statName[playerPrayer]
-					+ " to bury these bones.");
+			sendMessage("You need " + prayer[1] + " " + statName[playerPrayer] + " to bury these bones.");
 			resetPR();
 			return false;
 		}
@@ -24069,8 +23989,7 @@ public class client extends Player implements Runnable {
 	/* SMITHING */
 	public boolean smelting() {
 		boolean DoSmelt = true;
-		if (playerLevel[playerSmithing] >= smelting[1]
-				&& playerEquipment[playerWeapon] >= 0) {
+		if (playerLevel[playerSmithing] >= smelting[1] && playerEquipment[playerWeapon] >= 0) {
 			if (actionTimer == 0 && smelting[0] == 1) {
 				actionAmount++;
 				sendMessage("You place the ores in the furnace...");
@@ -24090,11 +24009,9 @@ public class client extends Player implements Runnable {
 					}
 				}
 				if (smelting[4] == 436) {
-					deleteItem(438, getItemSlot(438),
-							playerItemsN[getItemSlot(438)]);
+					deleteItem(438, getItemSlot(438), playerItemsN[getItemSlot(438)]);
 				} else if (smelting[4] == 438) {
-					deleteItem(436, getItemSlot(436),
-							playerItemsN[getItemSlot(436)]);
+					deleteItem(436, getItemSlot(436), playerItemsN[getItemSlot(436)]);
 				}
 				if (smelting[3] == 2351 && playerEquipment[playerRing] != 2568) {
 					if (misc.random2(2) == 1) {
@@ -24114,8 +24031,7 @@ public class client extends Player implements Runnable {
 				}
 			}
 		} else {
-			sendMessage("You need " + smelting[1] + " "
-					+ statName[playerSmithing] + " to smelt those ores.");
+			sendMessage("You need " + smelting[1] + " " + statName[playerSmithing] + " to smelt those ores.");
 			resetSmelt();
 			return false;
 		}
@@ -24388,8 +24304,7 @@ public class client extends Player implements Runnable {
 				color = "@gre@";
 			}
 			sendFrame126(color + "" + Item.smithing_frame[Type2][i][3] + ""+ bar, Item.smithing_frame[Type2][i][4]);
-			sendFrame126(color2 + "" + GetItemName(Item.smithing_frame[Type2][i][0]).replace(name, ""),
-					Item.smithing_frame[Type2][i][5]);
+			sendFrame126(color2 + "" + GetItemName(Item.smithing_frame[Type2][i][0]).replace(name, ""), Item.smithing_frame[Type2][i][5]);
 		}
 		Item.SmithingItems[0][0] = Item.smithing_frame[Type2][0][0]; // Dagger
 		Item.SmithingItems[0][1] = Item.smithing_frame[Type2][0][1];
@@ -24512,8 +24427,7 @@ public class client extends Player implements Runnable {
 					ItemN = Item.smithing_frame[(smithing[2] - 1)][i][1];
 				}
 			}
-			if (playerLevel[playerSmithing] >= smithing[1]
-					&& playerEquipment[playerWeapon] >= 0) {
+			if (playerLevel[playerSmithing] >= smithing[1] && playerEquipment[playerWeapon] >= 0) {
 				if (AreXItemsInBag(barid, bars) == true) {
 					if (freeSlots() > 0) {
 						if (actionTimer == 0 && smithing[0] == 1) {
@@ -24529,15 +24443,11 @@ public class client extends Player implements Runnable {
 						}
 						if (actionTimer == 0 && smithing[0] == 2) {
 							for (int i = 0; i < bars; i++) {
-								deleteItem(barid, getItemSlot(barid),
-										playerItemsN[getItemSlot(barid)]);
+								deleteItem(barid, getItemSlot(barid), playerItemsN[getItemSlot(barid)]);
 							}
-							addSkillXP(
-									((int) (12.5 * bars * smithing[2] * smithing[3])),
-									playerSmithing);
+							addSkillXP(((int) (12.5 * bars * smithing[2] * smithing[3])), playerSmithing);
 							addItem(smithing[4], ItemN);
-							sendMessage("You smith a "
-									+ GetItemName(smithing[4]) + ".");
+							sendMessage("You smith a " + GetItemName(smithing[4]) + ".");
 							resetAnimation();
 							if (smithing[5] <= 1) {
 								resetSM();
@@ -24553,15 +24463,12 @@ public class client extends Player implements Runnable {
 						return false;
 					}
 				} else {
-					sendMessage("You need " + bars + " " + GetItemName(barid)
-							+ " to smith a " + GetItemName(smithing[4]));
+					sendMessage("You need " + bars + " " + GetItemName(barid) + " to smith a " + GetItemName(smithing[4]));
 					resetAnimation();
 					resetSM();
 				}
 			} else {
-				sendMessage("You need " + smithing[1] + " "
-						+ statName[playerSmithing] + " to smith a "
-						+ GetItemName(smithing[4]));
+				sendMessage("You need " + smithing[1] + " " + statName[playerSmithing] + " to smith a " + GetItemName(smithing[4]));
 				resetSM();
 				return false;
 			}
@@ -24616,8 +24523,7 @@ public class client extends Player implements Runnable {
 						IsCutting = true;
 					}
 					if (actionTimer == 0 && IsCutting == true) {
-						addSkillXP((woodcutting[2] * woodcutting[3]),
-								playerWoodcutting);
+						addSkillXP((woodcutting[2] * woodcutting[3]), playerWoodcutting);
 						addItem(woodcutting[4], 1);
 						sendMessage("You get some logs.");
 						playerEquipment[playerWeapon] = OriginalWeapon;
@@ -24632,8 +24538,7 @@ public class client extends Player implements Runnable {
 					return false;
 				}
 			} else {
-				sendMessage("You need " + woodcutting[1] + " "
-						+ statName[playerWoodcutting] + " to cut those logs.");
+				sendMessage("You need " + woodcutting[1] + " " + statName[playerWoodcutting] + " to cut those logs.");
 				resetWC();
 				return false;
 			}
@@ -24702,8 +24607,7 @@ public class client extends Player implements Runnable {
 		for (int i = 0; i < playerItems.length; i++) {
 			Bag = playerItems[i];
 			Bag -= 1; // Only to fix the ID !
-			if (Bag == 1351 || Bag == 1349 || Bag == 1353 || Bag == 1361
-					|| Bag == 1355 || Bag == 1357 || Bag == 1359/* || Bag == X */) {
+			if (Bag == 1351 || Bag == 1349 || Bag == 1353 || Bag == 1361 || Bag == 1355 || Bag == 1357 || Bag == 1359/* || Bag == X */) {
 				break;
 			}
 		}
@@ -24748,8 +24652,7 @@ public class client extends Player implements Runnable {
 		resetItems(3322);
 		resetTItems(3415);
 		resetOTItems(3416);
-		sendFrame126("Trading With: "
-				+ PlayerHandler.players[tradeWith].playerName, 3417);
+		sendFrame126("Trading With: " + PlayerHandler.players[tradeWith].playerName, 3417);
 		sendFrame126("", 3431);
 	}
 
@@ -24809,12 +24712,8 @@ public class client extends Player implements Runnable {
 					}
 
 					try {
-						bw = new BufferedWriter(new FileWriter(
-								"./logs/trades.txt", true));
-						bw.write(PlayerHandler.players[tradeWith].playerName
-								+ " trades item: " + (playerOTItems[i] - 1)
-								+ " amount: " + playerOTItemsN[i] + " with "
-								+ playerName);
+						bw = new BufferedWriter(new FileWriter("./logs/trades.txt", true));
+						bw.write(PlayerHandler.players[tradeWith].playerName + " trades item: " + (playerOTItems[i] - 1) + " amount: " + playerOTItemsN[i] + " with " + playerName);
 						bw.newLine();
 						bw.flush();
 					} catch (IOException ioe) {
@@ -24981,8 +24880,7 @@ public class client extends Player implements Runnable {
 					}
 				}
 				if (IsIn == false) {
-					sendMessage("You cannot sell " + GetItemName(itemID)
-							+ " in this store.");
+					sendMessage("You cannot sell " + GetItemName(itemID) + " in this store.");
 					return false;
 				}
 			}
@@ -24990,12 +24888,9 @@ public class client extends Player implements Runnable {
 				sendMessage("I cannot sell " + GetItemName(itemID) + ".");
 				return false;
 			}
-			if (amount > playerItemsN[fromSlot]
-					&& (Item.itemIsNote[(playerItems[fromSlot] - 1)] == true || Item.itemStackable[(playerItems[fromSlot] - 1)] == true)) {
+			if (amount > playerItemsN[fromSlot] && (Item.itemIsNote[(playerItems[fromSlot] - 1)] == true || Item.itemStackable[(playerItems[fromSlot] - 1)] == true)) {
 				amount = playerItemsN[fromSlot];
-			} else if (amount > GetXItemsInBag(itemID)
-					&& Item.itemIsNote[(playerItems[fromSlot] - 1)] == false
-					&& Item.itemStackable[(playerItems[fromSlot] - 1)] == false) {
+			} else if (amount > GetXItemsInBag(itemID) && Item.itemIsNote[(playerItems[fromSlot] - 1)] == false && Item.itemStackable[(playerItems[fromSlot] - 1)] == false) {
 				amount = GetXItemsInBag(itemID);
 			}
 			int TotPrice2;
@@ -25070,9 +24965,7 @@ public class client extends Player implements Runnable {
 	public void UpdatePlayerShop() {
 		for (int i = 1; i < PlayerHandler.maxPlayers; i++) {
 			if (PlayerHandler.players[i] != null) {
-				if (PlayerHandler.players[i].IsShopping == true
-						&& PlayerHandler.players[i].MyShopID == MyShopID
-						&& i != playerId) {
+				if (PlayerHandler.players[i].IsShopping == true && PlayerHandler.players[i].MyShopID == MyShopID && i != playerId) {
 					PlayerHandler.players[i].UpdateShop = true;
 				}
 			}
@@ -25182,7 +25075,7 @@ public class client extends Player implements Runnable {
 		case 31: // NEW CLUE
 			sendFrame200(4883, 591);
 			sendFrame126(GetNpcName(NpcTalkTo), 4884);
-			sendFrame126("Heres your next clue, goodluck", 4885);
+			sendFrame126("Heres your next clue, good luck!", 4885);
 			sendFrame75(NpcTalkTo, 4883);
 			sendFrame164(4882);
 			NpcDialogueSend = true;
@@ -25210,7 +25103,7 @@ public class client extends Player implements Runnable {
 			sendFrame171(1, 2465);
 			sendFrame171(0, 2468);
 			sendFrame126("Select an Option", 2460);
-			sendFrame126("Yes, please", 2461);
+			sendFrame126("Yes, please.", 2461);
 			sendFrame126("No, Thank you.", 2462);
 			sendFrame164(2459);
 			NpcDialogueSend = true;
@@ -25229,7 +25122,7 @@ public class client extends Player implements Runnable {
 			sendFrame171(1, 2465);
 			sendFrame171(0, 2468);
 			sendFrame126("Select an Option", 2460);
-			sendFrame126("Yes, please", 2461);
+			sendFrame126("Yes, please.", 2461);
 			sendFrame126("No, Thank you.", 2462);
 			sendFrame164(2459);
 			NpcDialogueSend = true;
@@ -25334,7 +25227,7 @@ public class client extends Player implements Runnable {
 		{
 			sendFrame200(4883, 591);
 			sendFrame126(GetNpcName(NpcTalkTo), 4884);
-			sendFrame126("Thanks giving me the " + GetItemName(6889)+ ", now all I need", 4885);
+			sendFrame126("Thanks for giving me the " + GetItemName(6889)+ ", now all I need", 4885);
 			sendFrame126("is the " + GetItemName(4206)+ " to add the power to the armour.", 4886);
 			sendFrame75(NpcTalkTo, 4883);
 			sendFrame164(4882);
@@ -25367,7 +25260,7 @@ public class client extends Player implements Runnable {
 		{
 			sendFrame200(4883, 591);
 			sendFrame126(GetNpcName(NpcTalkTo), 4884);
-			sendFrame126("Yo, I'll add what I need to your quest log", 4885);
+			sendFrame126("I'll add what I need to your quest log", 4885);
 			sendFrame75(NpcTalkTo, 4883);
 			sendFrame164(4882);
 			NpcDialogueSend = true;
@@ -25409,7 +25302,7 @@ public class client extends Player implements Runnable {
 		case 14600: // Make over mage chat
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Yo you want a make over?", 4904);
+			sendFrame126("Do you want a make over?", 4904);
 			sendFrame126("", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25428,7 +25321,7 @@ public class client extends Player implements Runnable {
 		case 14602: // Make over mage chat accept offer
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Ok that'll be 10000 coins", 4904);
+			sendFrame126("Ok. That'll be 10000 coins", 4904);
 			sendFrame126("", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25440,7 +25333,7 @@ public class client extends Player implements Runnable {
 			sendFrame171(0, 2468);
 			sendFrame126("Select an Option", 2460);
 			sendFrame126("Ok", 2461);
-			sendFrame126("Gay...", 2462);
+			sendFrame126("", 2462);
 			sendFrame164(2459);
 			NpcDialogueSend = true;
 			break;
@@ -25453,7 +25346,7 @@ public class client extends Player implements Runnable {
 			} else {
 				sendFrame126(GetNpcName(NpcTalkTo), 4902);
 				sendFrame126("", 4903);
-				sendFrame126("You got no money, bitch,", 4904);
+				sendFrame126("You got no money,", 4904);
 				sendFrame126("come back when you got some.", 4905);
 				sendFrame126("", 4906);
 				sendFrame75(NpcTalkTo, 4901);
@@ -25475,8 +25368,7 @@ public class client extends Player implements Runnable {
 		case 301: // Spells of the gods (q3) start point
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Hi there, you don't happen to have seen a staff",
-					4904);
+			sendFrame126("Hi there, you don't happen to have seen a staff", 4904);
 			sendFrame126("with a pink orb, have you?", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25583,7 +25475,7 @@ public class client extends Player implements Runnable {
 					// magic stone
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Go get the magic stone bitch!", 4904);
+			sendFrame126("Go get the magic stone.", 4904);
 			sendFrame126("", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25605,7 +25497,7 @@ public class client extends Player implements Runnable {
 					// firework
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Good you got it, aiightz now you need", 4904);
+			sendFrame126("Good you got it, now you need", 4904);
 			sendFrame126("to go to level 40+ wilderness where the...", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25740,7 +25632,7 @@ public class client extends Player implements Runnable {
 					// daconia rock
 			sendFrame126(GetNpcName(NpcTalkTo), 4902);
 			sendFrame126("", 4903);
-			sendFrame126("Go get the rock bitch!", 4904);
+			sendFrame126("Go get the rock!", 4904);
 			sendFrame126("", 4905);
 			sendFrame126("", 4906);
 			sendFrame75(NpcTalkTo, 4901);
@@ -25780,7 +25672,7 @@ public class client extends Player implements Runnable {
 			sendFrame171(1, 2465);
 			sendFrame171(0, 2468);
 			sendFrame126("Select an Option", 2460);
-			sendFrame126("Hell yeah!", 2461);
+			sendFrame126("Yes, please.", 2461);
 			sendFrame126("No thanks.", 2462);
 			sendFrame164(2459);
 			NpcDialogueSend = true;
@@ -25957,8 +25849,7 @@ public class client extends Player implements Runnable {
 		String ItemName = GetItemName(ItemID);
 		if (ItemName.startsWith("Combat Cape")) {
 			return 99;
-		} else if (ItemName.startsWith("Torags hammers")
-				|| ItemName.endsWith("Dharoks greataxe")) {
+		} else if (ItemName.startsWith("Torags hammers") || ItemName.endsWith("Dharoks greataxe")) {
 			return 70;
 		}
 		return 1;
