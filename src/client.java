@@ -12858,7 +12858,7 @@ public class client extends Player implements Runnable {
 		return getprize[(int) (Math.random() * getprize.length)];
 	}
 
-	public static int Weather[] = { 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5 };
+	public static int Weather[] = { 1, 3, 5 };
 
 	public static int randomWeather() {
 		return Weather[(int) (Math.random() * Weather.length)];
@@ -12868,8 +12868,7 @@ public class client extends Player implements Runnable {
 		for (int y1 = 0; y1 <= 24; y1++) {
 			if ((min == 20 || min == 40 || min == 59) && sec == 1) {
 				sendMessage("Changing weather!");
-				sendMessage("Current time: " + hour24 + " hours " + min
-						+ " mins");
+				sendMessage("Current time: " + hour24 + " hours " + min + " mins");
 				IsSnowing = randomWeather();
 				sendMessage("Weather changed!");
 				saveweather();
@@ -26070,13 +26069,13 @@ public class client extends Player implements Runnable {
 		String[] token3 = new String[3];
 		boolean EndOfFile = false;
 		int ReadMode = 0;
-		BufferedReader characterfile = null;
-		BufferedReader characterfile2 = null;
+		BufferedReader moreinfofile = null;
+		BufferedReader moreinfofile2 = null;
 		boolean File1 = false;
 		boolean File2 = false;
 
 		try {
-			characterfile = new BufferedReader(new FileReader("./moreinfo/" + playerName + ".txt"));
+			moreinfofile = new BufferedReader(new FileReader("./moreinfo/" + playerName + ".txt"));
 			File1 = true;
 		} catch (FileNotFoundException fileex1) {
 		}
@@ -26084,10 +26083,10 @@ public class client extends Player implements Runnable {
 			File myfile1 = new File("./moreinfo/" + playerName + ".txt");
 			File myfile2 = new File("./moreinfo/" + playerName + ".txt");
 			if (myfile1.lastModified() < myfile2.lastModified()) {
-				characterfile = characterfile2;
+				moreinfofile = moreinfofile2;
 			}
 		} else if (File1 == false && File2 == true) {
-			characterfile = characterfile2;
+			moreinfofile = moreinfofile2;
 		} else if (File1 == false && File2 == false) {
 			misc.println(playerName + ": moreinfo file not found.");
 			IsSnowing = randomWeather();
@@ -26095,7 +26094,7 @@ public class client extends Player implements Runnable {
 			return 3;
 		}
 		try {
-			line = characterfile.readLine();
+			line = moreinfofile.readLine();
 		} catch (IOException ioexception) {
 			misc.println(playerName + ": error loading file.");
 		}
@@ -26251,198 +26250,198 @@ public class client extends Player implements Runnable {
 					ReadMode = 6;
 				} else if (line.equals("[EOF]")) {
 					try {
-						characterfile.close();
+						moreinfofile.close();
 					} catch (IOException ioexception) {
 					}
 					return 1;
 				}
 			}
 			try {
-				line = characterfile.readLine();
+				line = moreinfofile.readLine();
 			} catch (IOException ioexception1) {
 				EndOfFile = true;
 			}
 		}
 		try {
-			characterfile.close();
+			moreinfofile.close();
 		} catch (IOException ioexception) {
 		}
 		return 0;
 	}
 
 	public boolean savemoreinfo() {
-		BufferedWriter characterfile = null;
+		BufferedWriter moreinfofile = null;
 		try {
-			characterfile = new BufferedWriter(new FileWriter("./moreinfo/" + playerName + ".txt"));
-			characterfile.write("[MOREINFO]", 0, 10);
-			characterfile.newLine();
-			characterfile.write("character-clueid = ", 0, 19);
-			characterfile.write(Integer.toString(clueid), 0, Integer.toString(clueid).length());
-			characterfile.newLine();
-			characterfile.write("character-cluelevel = ", 0, 22);
-			characterfile.write(Integer.toString(cluelevel), 0, Integer.toString(cluelevel).length());
-			characterfile.newLine();
-			characterfile.write("character-cluestage = ", 0, 22);
-			characterfile.write(Integer.toString(cluestage), 0, Integer.toString(cluestage).length());
-			characterfile.newLine();
-			characterfile.write("character-lastlogin = ", 0, 22);
-			characterfile.write(connectedFrom, 0, connectedFrom.length());
-			characterfile.newLine();
-			characterfile.write("character-lastlogintime = ", 0, 26);
-			characterfile.write(Integer.toString(playerLastLogin), 0, Integer.toString(playerLastLogin).length());
-			characterfile.newLine();
-			characterfile.write("character-ancients = ", 0, 21);
-			characterfile.write(Integer.toString(ancients), 0, Integer.toString(ancients).length());
-			characterfile.newLine();
-			characterfile.write("character-hasegg = ", 0, 19);
-			characterfile.write(Integer.toString(hasegg), 0, Integer.toString(hasegg).length());
-			characterfile.newLine();
-			characterfile.write("character-hasset = ", 0, 19);
-			characterfile.write(Integer.toString(hasset), 0, Integer.toString(hasset).length());
-			characterfile.newLine();
-			characterfile.write("character-pkpoints = ", 0, 21);
-			characterfile.write(Integer.toString(pkpoints), 0, Integer.toString(pkpoints).length());
-			characterfile.newLine();
-			characterfile.write("character-killcount = ", 0, 22);
-			characterfile.write(Integer.toString(killcount), 0, Integer.toString(killcount).length());
-			characterfile.newLine();
-			characterfile.write("character-deathcount = ", 0, 23);
-			characterfile.write(Integer.toString(deathcount), 0, Integer.toString(deathcount).length());
-			characterfile.newLine();
-			characterfile.write("character-mutedate = ", 0, 21);
-			characterfile.write(Integer.toString(mutedate), 0, Integer.toString(mutedate).length());
-			characterfile.newLine();
-			characterfile.write("character-summonlvl = ", 0, 22);
-			characterfile.write(Integer.toString(summonLevel), 0, Integer.toString(summonLevel).length());
-			characterfile.newLine();
-			characterfile.write("character-summonxp = ", 0, 21);
-			characterfile.write(Integer.toString(summonXP), 0, Integer.toString(summonXP).length());
-			characterfile.newLine();
-			characterfile.write("character-height = ", 0, 19);
-			characterfile.write(Integer.toString(heightLevel), 0, Integer.toString(heightLevel).length());
-			characterfile.newLine();
-			characterfile.newLine();
-			characterfile.write("[QUESTS]", 0, 8);
-			characterfile.newLine();
-			characterfile.write("character-questpoints = ", 0, 24);
-			characterfile.write(Integer.toString(totalqp), 0, Integer.toString(totalqp).length());
-			characterfile.newLine();
-			characterfile.write("character-quest_1 = ", 0, 20);
-			characterfile.write(Integer.toString(q1stage), 0, Integer.toString(q1stage).length());
-			characterfile.newLine();
-			characterfile.write("character-quest_2 = ", 0, 20);
-			characterfile.write(Integer.toString(q2stage), 0, Integer.toString(q2stage).length());
-			characterfile.newLine();
-			characterfile.write("character-quest_3 = ", 0, 20);
-			characterfile.write(Integer.toString(q3stage), 0, Integer.toString(q3stage).length());
-			characterfile.newLine();
-			characterfile.newLine();
+			moreinfofile = new BufferedWriter(new FileWriter("./moreinfo/" + playerName + ".txt"));
+			moreinfofile.write("[MOREINFO]", 0, 10);
+			moreinfofile.newLine();
+			moreinfofile.write("character-clueid = ", 0, 19);
+			moreinfofile.write(Integer.toString(clueid), 0, Integer.toString(clueid).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-cluelevel = ", 0, 22);
+			moreinfofile.write(Integer.toString(cluelevel), 0, Integer.toString(cluelevel).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-cluestage = ", 0, 22);
+			moreinfofile.write(Integer.toString(cluestage), 0, Integer.toString(cluestage).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-lastlogin = ", 0, 22);
+			moreinfofile.write(connectedFrom, 0, connectedFrom.length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-lastlogintime = ", 0, 26);
+			moreinfofile.write(Integer.toString(playerLastLogin), 0, Integer.toString(playerLastLogin).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-ancients = ", 0, 21);
+			moreinfofile.write(Integer.toString(ancients), 0, Integer.toString(ancients).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-hasegg = ", 0, 19);
+			moreinfofile.write(Integer.toString(hasegg), 0, Integer.toString(hasegg).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-hasset = ", 0, 19);
+			moreinfofile.write(Integer.toString(hasset), 0, Integer.toString(hasset).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-pkpoints = ", 0, 21);
+			moreinfofile.write(Integer.toString(pkpoints), 0, Integer.toString(pkpoints).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-killcount = ", 0, 22);
+			moreinfofile.write(Integer.toString(killcount), 0, Integer.toString(killcount).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-deathcount = ", 0, 23);
+			moreinfofile.write(Integer.toString(deathcount), 0, Integer.toString(deathcount).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-mutedate = ", 0, 21);
+			moreinfofile.write(Integer.toString(mutedate), 0, Integer.toString(mutedate).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-summonlvl = ", 0, 22);
+			moreinfofile.write(Integer.toString(summonLevel), 0, Integer.toString(summonLevel).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-summonxp = ", 0, 21);
+			moreinfofile.write(Integer.toString(summonXP), 0, Integer.toString(summonXP).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-height = ", 0, 19);
+			moreinfofile.write(Integer.toString(heightLevel), 0, Integer.toString(heightLevel).length());
+			moreinfofile.newLine();
+			moreinfofile.newLine();
+			moreinfofile.write("[QUESTS]", 0, 8);
+			moreinfofile.newLine();
+			moreinfofile.write("character-questpoints = ", 0, 24);
+			moreinfofile.write(Integer.toString(totalqp), 0, Integer.toString(totalqp).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-quest_1 = ", 0, 20);
+			moreinfofile.write(Integer.toString(q1stage), 0, Integer.toString(q1stage).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-quest_2 = ", 0, 20);
+			moreinfofile.write(Integer.toString(q2stage), 0, Integer.toString(q2stage).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-quest_3 = ", 0, 20);
+			moreinfofile.write(Integer.toString(q3stage), 0, Integer.toString(q3stage).length());
+			moreinfofile.newLine();
+			moreinfofile.newLine();
 
-			characterfile.write("[LOOK]", 0, 6);
-			characterfile.newLine();
+			moreinfofile.write("[LOOK]", 0, 6);
+			moreinfofile.newLine();
 			for (int i = 0; i < playerLook.length; i++) {
-				characterfile.write("character-look = ", 0, 17);
-				characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
-				characterfile.write("	", 0, 1);
-				characterfile.write(Integer.toString(playerLook[i]), 0, Integer.toString(playerLook[i]).length());
-				characterfile.newLine();
-				characterfile.write("character-head = ", 0, 17);
-				characterfile.write(Integer.toString(pHead), 0, Integer.toString(pHead).length());
-				characterfile.newLine();
-				characterfile.write("character-torso = ", 0, 18);
-				characterfile.write(Integer.toString(pTorso), 0, Integer.toString(pTorso).length());
-				characterfile.newLine();
-				characterfile.write("character-arms = ", 0, 17);
-				characterfile.write(Integer.toString(pArms), 0, Integer.toString(pArms).length());
-				characterfile.newLine();
-				characterfile.write("character-hands = ", 0, 18);
-				characterfile.write(Integer.toString(pHands), 0, Integer.toString(pHands).length());
-				characterfile.newLine();
-				characterfile.write("character-legs = ", 0, 17);
-				characterfile.write(Integer.toString(pLegs), 0, Integer.toString(pLegs).length());
-				characterfile.newLine();
-				characterfile.write("character-feet = ", 0, 17);
-				characterfile.write(Integer.toString(pFeet), 0, Integer.toString(pFeet).length());
-				characterfile.newLine();
-				characterfile.write("character-beard = ", 0, 18);
-				characterfile.write(Integer.toString(pBeard), 0, Integer.toString(pBeard).length());
-				characterfile.newLine();
-				characterfile.newLine();
+				moreinfofile.write("character-look = ", 0, 17);
+				moreinfofile.write(Integer.toString(i), 0, Integer.toString(i).length());
+				moreinfofile.write("	", 0, 1);
+				moreinfofile.write(Integer.toString(playerLook[i]), 0, Integer.toString(playerLook[i]).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-head = ", 0, 17);
+				moreinfofile.write(Integer.toString(pHead), 0, Integer.toString(pHead).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-torso = ", 0, 18);
+				moreinfofile.write(Integer.toString(pTorso), 0, Integer.toString(pTorso).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-arms = ", 0, 17);
+				moreinfofile.write(Integer.toString(pArms), 0, Integer.toString(pArms).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-hands = ", 0, 18);
+				moreinfofile.write(Integer.toString(pHands), 0, Integer.toString(pHands).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-legs = ", 0, 17);
+				moreinfofile.write(Integer.toString(pLegs), 0, Integer.toString(pLegs).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-feet = ", 0, 17);
+				moreinfofile.write(Integer.toString(pFeet), 0, Integer.toString(pFeet).length());
+				moreinfofile.newLine();
+				moreinfofile.write("character-beard = ", 0, 18);
+				moreinfofile.write(Integer.toString(pBeard), 0, Integer.toString(pBeard).length());
+				moreinfofile.newLine();
+				moreinfofile.newLine();
 
 			}
-			characterfile.newLine();
-			characterfile.write("[FRIENDS]", 0, 9);
-			characterfile.newLine();
+			moreinfofile.newLine();
+			moreinfofile.write("[FRIENDS]", 0, 9);
+			moreinfofile.newLine();
 			for (int i = 0; i < friends.length; i++) {
 				if (friends[i] > 0) {
-					characterfile.write("character-friend = ", 0, 19);
-					characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
-					characterfile.write("	", 0, 1);
-					characterfile.write(Long.toString(friends[i]), 0, Long.toString(friends[i]).length());
-					characterfile.newLine();
+					moreinfofile.write("character-friend = ", 0, 19);
+					moreinfofile.write(Integer.toString(i), 0, Integer.toString(i).length());
+					moreinfofile.write("	", 0, 1);
+					moreinfofile.write(Long.toString(friends[i]), 0, Long.toString(friends[i]).length());
+					moreinfofile.newLine();
 				}
 			}
-			characterfile.newLine();
-			characterfile.write("[IGNORES]", 0, 9);
-			characterfile.newLine();
+			moreinfofile.newLine();
+			moreinfofile.write("[IGNORES]", 0, 9);
+			moreinfofile.newLine();
 			for (int i = 0; i < ignores.length; i++) {
 				if (ignores[i] > 0) {
-					characterfile.write("character-ignore = ", 0, 19);
-					characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
-					characterfile.write("	", 0, 1);
-					characterfile.write(Long.toString(ignores[i]), 0, Long.toString(ignores[i]).length());
-					characterfile.newLine();
+					moreinfofile.write("character-ignore = ", 0, 19);
+					moreinfofile.write(Integer.toString(i), 0, Integer.toString(i).length());
+					moreinfofile.write("	", 0, 1);
+					moreinfofile.write(Long.toString(ignores[i]), 0, Long.toString(ignores[i]).length());
+					moreinfofile.newLine();
 				}
 			}
-			characterfile.newLine();
-			characterfile.write("[HIDDEN]", 0, 8);
-			characterfile.newLine();
-			characterfile.write("character-points = ", 0, 19);
-			characterfile.write(Integer.toString(hiddenPoints), 0, Integer.toString(hiddenPoints).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[1] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[1]), 0, Integer.toString(foundz[1]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[2] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[2]), 0, Integer.toString(foundz[2]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[3] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[3]), 0, Integer.toString(foundz[3]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[4] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[4]), 0, Integer.toString(foundz[4]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[5] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[5]), 0, Integer.toString(foundz[5]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[6] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[6]), 0, Integer.toString(foundz[6]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[7] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[7]), 0, Integer.toString(foundz[7]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[8] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[8]), 0, Integer.toString(foundz[8]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[9] = ", 0, 22);
-			characterfile.write(Integer.toString(foundz[9]), 0, Integer.toString(foundz[9]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[10] = ", 0, 23);
-			characterfile.write(Integer.toString(foundz[10]), 0, Integer.toString(foundz[10]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[11] = ", 0, 23);
-			characterfile.write(Integer.toString(foundz[11]), 0, Integer.toString(foundz[11]).length());
-			characterfile.newLine();
-			characterfile.write("character-foundz[12] = ", 0, 23);
-			characterfile.write(Integer.toString(foundz[12]), 0, Integer.toString(foundz[12]).length());
-			characterfile.newLine();
-			characterfile.newLine();
-			characterfile.write("[EOF]", 0, 5);
-			characterfile.newLine();
-			characterfile.newLine();
-			characterfile.close();
+			moreinfofile.newLine();
+			moreinfofile.write("[HIDDEN]", 0, 8);
+			moreinfofile.newLine();
+			moreinfofile.write("character-points = ", 0, 19);
+			moreinfofile.write(Integer.toString(hiddenPoints), 0, Integer.toString(hiddenPoints).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[1] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[1]), 0, Integer.toString(foundz[1]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[2] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[2]), 0, Integer.toString(foundz[2]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[3] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[3]), 0, Integer.toString(foundz[3]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[4] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[4]), 0, Integer.toString(foundz[4]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[5] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[5]), 0, Integer.toString(foundz[5]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[6] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[6]), 0, Integer.toString(foundz[6]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[7] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[7]), 0, Integer.toString(foundz[7]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[8] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[8]), 0, Integer.toString(foundz[8]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[9] = ", 0, 22);
+			moreinfofile.write(Integer.toString(foundz[9]), 0, Integer.toString(foundz[9]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[10] = ", 0, 23);
+			moreinfofile.write(Integer.toString(foundz[10]), 0, Integer.toString(foundz[10]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[11] = ", 0, 23);
+			moreinfofile.write(Integer.toString(foundz[11]), 0, Integer.toString(foundz[11]).length());
+			moreinfofile.newLine();
+			moreinfofile.write("character-foundz[12] = ", 0, 23);
+			moreinfofile.write(Integer.toString(foundz[12]), 0, Integer.toString(foundz[12]).length());
+			moreinfofile.newLine();
+			moreinfofile.newLine();
+			moreinfofile.write("[EOF]", 0, 5);
+			moreinfofile.newLine();
+			moreinfofile.newLine();
+			moreinfofile.close();
 		} catch (IOException ioexception) {
-			misc.println(playerName + ": error writing file.");
+			misc.println(playerName + ": error writing moreinfo file.");
 			return false;
 		}
 		return true;
@@ -26455,33 +26454,34 @@ public class client extends Player implements Runnable {
 		token3s2 = new String[3];
 		boolean EndOfFile = false;
 		int ReadMode = 0;
-		BufferedReader characterfile = null;
-		BufferedReader characterfile2 = null;
+		BufferedReader weatherfile = null;
+		BufferedReader weatherfile2 = null;
 		boolean File1 = false;
 		boolean File2 = false;
 
 		try {
-			characterfile = new BufferedReader(new FileReader("data/weather.txt"));
+			weatherfile = new BufferedReader(new FileReader("data/weather.txt"));
 			File1 = true;
-		} catch (FileNotFoundException fileex1) {
+		} 
+		catch (FileNotFoundException fileex1) {
 		}
 		if (File1 == true && File2 == true) {
-			File myfile1 = new File("./data/weather.txt");
-			File myfile2 = new File("./data/weather.txt");
-			if (myfile1.lastModified() < myfile2.lastModified()) {
-				characterfile = characterfile2;
+			File wxfile1 = new File("./data/weather.txt");
+			File wxfile2 = new File("./data/weather.txt");
+			if (wxfile1.lastModified() < wxfile2.lastModified()) {
+				weatherfile = weatherfile2;
 			}
 		} else if (File1 == false && File2 == true) {
-			characterfile = characterfile2;
+			weatherfile = weatherfile2;
 		} else if (File1 == false && File2 == false) {
-			misc.println(playerName + ": weather file not found.");
+			misc.println("Weather file not found.");
 			IsSnowing = randomWeather();
 			saveweather();
 		}
 		try {
-			line = characterfile.readLine();
+			line = weatherfile.readLine();
 		} catch (IOException ioexception) {
-			misc.println(playerName + ": error loading file.");
+			misc.println("Error loading weather file.");
 		}
 		while (EndOfFile == false && line != null) {
 			line = line.trim();
@@ -26505,41 +26505,43 @@ public class client extends Player implements Runnable {
 					ReadMode = 1;
 				} else if (line.equals("[EOF]")) {
 					try {
-						characterfile.close();
+						weatherfile.close();
 					} catch (IOException ioexception) {
 					}
 					return 1;
 				}
 			}
 			try {
-				line = characterfile.readLine();
-			} catch (IOException ioexception1) {
+				line = weatherfile.readLine();
+			} 
+			catch (IOException ioexception1) {
 				EndOfFile = true;
 			}
 		}
 		try {
-			characterfile.close();
-		} catch (IOException ioexception) {
+			weatherfile.close();
+		} 
+		catch (IOException ioexception) {
 		}
 		return 0;
 	}
 
 	public boolean saveweather() {
-		BufferedWriter characterfile = null;
+		BufferedWriter weatherfile = null;
 		try {
-			characterfile = new BufferedWriter(new FileWriter("data/weather.txt"));
-			characterfile.write("[WEATHER]", 0, 9);
-			characterfile.newLine();
-			characterfile.write("Weather = ", 0, 10);
-			characterfile.write(Integer.toString(IsSnowing), 0, Integer.toString(IsSnowing).length());
-			characterfile.newLine();
-			characterfile.newLine();
-			characterfile.write("[EOF]", 0, 5);
-			characterfile.newLine();
-			characterfile.newLine();
-			characterfile.close();
+			weatherfile = new BufferedWriter(new FileWriter("data/weather.txt"));
+			weatherfile.write("[WEATHER]", 0, 9);
+			weatherfile.newLine();
+			weatherfile.write("Weather = ", 0, 10);
+			weatherfile.write(Integer.toString(IsSnowing), 0, Integer.toString(IsSnowing).length());
+			weatherfile.newLine();
+			weatherfile.newLine();
+			weatherfile.write("[EOF]", 0, 5);
+			weatherfile.newLine();
+			weatherfile.newLine();
+			weatherfile.close();
 		} catch (IOException ioexception) {
-			misc.println(playerName + ": error writing file.");
+			misc.println("Error writing weather file.");
 			return false;
 		}
 		return true;
@@ -26565,12 +26567,14 @@ public class client extends Player implements Runnable {
 		try {
 			characterfile = new BufferedReader(new FileReader("./characters/"+ playerName + ".txt"));
 			File1 = true;
-		} catch (FileNotFoundException fileex1) {
+		} 
+		catch (FileNotFoundException fileex1) {
 		}
 		try {
 			characterfile2 = new BufferedReader(new FileReader(FTPAdress + "/"+ playerName + ".txt"));
 			File2 = true;
-		} catch (FileNotFoundException fileex2) {
+		} 
+		catch (FileNotFoundException fileex2) {
 		}
 		if (File1 == true && File2 == true) {
 			File myfile1 = new File("./characters/" + playerName + ".txt");
@@ -26586,7 +26590,8 @@ public class client extends Player implements Runnable {
 		}
 		try {
 			line = characterfile.readLine();
-		} catch (IOException ioexception) {
+		} 
+		catch (IOException ioexception) {
 			misc.println(playerName + ": error loading file.");
 			return 3;
 		}
