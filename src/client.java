@@ -26077,7 +26077,8 @@ public class client extends Player implements Runnable {
 		try {
 			moreinfofile = new BufferedReader(new FileReader("./moreinfo/" + playerName + ".txt"));
 			File1 = true;
-		} catch (FileNotFoundException fileex1) {
+		} 
+		catch (FileNotFoundException fileex1) {
 		}
 		if (File1 == true && File2 == true) {
 			File myfile1 = new File("./moreinfo/" + playerName + ".txt");

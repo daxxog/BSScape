@@ -94,13 +94,15 @@ public class ObjectHandler {
 		BufferedReader characterfile = null;
 		try {
 			characterfile = new BufferedReader(new FileReader("./" + FileName));
-		} catch (FileNotFoundException fileex) {
+		} 
+		catch (FileNotFoundException fileex) {
 			misc.println(FileName + ": file not found.");
 			return false;
 		}
 		try {
 			line = characterfile.readLine();
-		} catch (IOException ioexception) {
+		} 
+		catch (IOException ioexception) {
 			misc.println(FileName + ": error loading file.");
 			return false;
 		}
@@ -142,20 +144,23 @@ public class ObjectHandler {
 				if (line.equals("[ENDOFOBJECTLIST]")) {
 					try {
 						characterfile.close();
-					} catch (IOException ioexception) {
+					} 
+					catch (IOException ioexception) {
 					}
 					return true;
 				}
 			}
 			try {
 				line = characterfile.readLine();
-			} catch (IOException ioexception1) {
+			} 
+			catch (IOException ioexception1) {
 				EndOfFile = true;
 			}
 		}
 		try {
 			characterfile.close();
-		} catch (IOException ioexception) {
+		} 
+		catch (IOException ioexception) {
 		}
 		return false;
 	}

@@ -308,8 +308,7 @@ public class Item {
 		int counter = 0;
 		int c;
 		try {
-			FileInputStream dataIn = new FileInputStream(new File(
-					"data/stackable.dat"));
+			FileInputStream dataIn = new FileInputStream(new File("data/stackable.dat"));
 			while ((c = dataIn.read()) != -1) {
 				if (c == 0)
 					itemStackable[counter] = false;
@@ -319,8 +318,7 @@ public class Item {
 			}
 			dataIn.close();
 		} catch (IOException e) {
-			System.out
-					.println("Critical error while loading stackabledata! Trace:");
+			System.out.println("Critical error while loading stackabledata! Trace:");
 			e.printStackTrace();
 		}
 
@@ -354,15 +352,13 @@ public class Item {
 			}
 			dataIn.close();
 		} catch (IOException e) {
-			System.out
-					.println("Critical error while loading twohanded! Trace:");
+			System.out.println("Critical error while loading twohanded! Trace:");
 			e.printStackTrace();
 		}
 
 		counter = 0;
 		try {
-			FileInputStream dataIn = new FileInputStream(new File(
-					"data/tradeable.dat"));
+			FileInputStream dataIn = new FileInputStream(new File("data/tradeable.dat"));
 			while ((c = dataIn.read()) != -1) {
 				if (c == 0)
 					itemTradeable[counter] = false;
@@ -372,15 +368,13 @@ public class Item {
 			}
 			dataIn.close();
 		} catch (IOException e) {
-			System.out
-					.println("Critical error while loading tradeable! Trace:");
+			System.out.println("Critical error while loading tradeable! Trace:");
 			e.printStackTrace();
 		}
 
 		counter = 0;
 		try {
-			FileInputStream dataIn = new FileInputStream(new File(
-					"data/sellable.dat"));
+			FileInputStream dataIn = new FileInputStream(new File("data/sellable.dat"));
 			while ((c = dataIn.read()) != -1) {
 				if (c == 0)
 					itemSellable[counter] = true;
