@@ -25,7 +25,7 @@ public class itemspawnpoints {
 				ItemHandler.addItem(347, 3096, 3956, 1, ItemHandler.globalItemController[i], false); //Herring
 				ItemHandler.addItem(1351, 3259, 3433, 1, ItemHandler.globalItemController[i], false); //Bronze Axe
 				ItemHandler.addItem(1351, 3194, 3424, 1, ItemHandler.globalItemController[i], false); //Bronze Axe
-				ItemHandler.addItem(2339, 2760, 3481, 1, ItemHandler.globalItemController[i], false) //Palm Leaf for Invisible Armor quest
+				ItemHandler.addItem(2339, 2760, 3481, 1, ItemHandler.globalItemController[i], false); //Palm Leaf for Invisible Armor quest
 				ItemHandler.addItem(1944, 3229, 3299, 1, ItemHandler.globalItemController[i], false); //Egg 
 				ItemHandler.addItem(2166, 3260, 3437, 1, ItemHandler.globalItemController[i], false); //Gnomebowl mould
 				ItemHandler.addItem(793, 2588, 3091, 1, ItemHandler.globalItemController[i], false); //Daconia rock for Spells of the Gods quest
